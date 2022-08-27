@@ -11,6 +11,12 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String description;
+    private boolean sold;
+    private byte[] photo;
+    @ManyToOne
+    @JoinColumn(name = "brand_id", foreignKey = @ForeignKey(name = "BRAND_ID_FK"))
+    private Brand brand;
     @ManyToOne
     @JoinColumn(name = "engine_id", foreignKey = @ForeignKey(name = "ENGINE_ID_FK"))
     private Engine engine;
@@ -29,6 +35,38 @@ public class Car {
         this.id = id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isSold() {
+        return sold;
+    }
+
+    public void setSold(boolean sold) {
+        this.sold = sold;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
     public Engine getEngine() {
         return engine;
     }
@@ -37,12 +75,8 @@ public class Car {
         this.engine = engine;
     }
 
-    public Set<Driver> getDrivers() {
-        return drivers;
-    }
-
-    public void setDrivers(Set<Driver> drivers) {
-        this.drivers = drivers;
+    public void addDriver(Driver driver) {
+        drivers.add(driver);
     }
 
     @Override
@@ -54,11 +88,11 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return id == car.id && Objects.equals(engine, car.engine);
+        return id == car.id && Objects.equals(brand, car.brand) && Objects.equals(engine, car.engine);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, engine);
+        return Objects.hash(id, brand, engine);
     }
 }
