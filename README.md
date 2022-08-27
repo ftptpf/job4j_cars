@@ -1,4 +1,5 @@
 # job4j_cars
+[![Build Status](https://app.travis-ci.com/ftptpf/job4j_cars.svg?branch=master)](https://app.travis-ci.com/ftptpf/job4j_cars)
 
 ## Проект "Площадка по продаже автомобилей"
 
