@@ -23,6 +23,6 @@
         <mapping class="ru.job4j.model.Brand" />
         <mapping class="ru.job4j.model.Body" />
         <mapping class="ru.job4j.model.Post" />
-        <mapping class="ru.job4j.model.User" />
+
     </session-factory>
 </hibernate-configuration>

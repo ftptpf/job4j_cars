@@ -12,8 +12,8 @@ public class Post {
     private int id;
     private LocalDateTime created;
     @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
     @OneToOne
     @JoinColumn(name = "car_id")
     private Car car;
@@ -34,12 +34,12 @@ public class Post {
         this.created = created;
     }
 
-    public User getUser() {
-        return user;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Driver driver) {
+        this.driver = driver;
     }
 
     public Car getCar() {
@@ -61,12 +61,12 @@ public class Post {
         Post post = (Post) o;
         return id == post.id
                 && Objects.equals(created, post.created)
-                && Objects.equals(user, post.user)
+                && Objects.equals(driver, post.driver)
                 && Objects.equals(car, post.car);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, created, user, car);
+        return Objects.hash(id, created, driver, car);
     }
 }
