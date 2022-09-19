@@ -12,7 +12,8 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String description;
-    private boolean sold;
+    private int year;
+    private int kilometer;
     private byte[] photo;
     @ManyToOne
     @JoinColumn(name = "brand_id", foreignKey = @ForeignKey(name = "BRAND_ID_FK"))
@@ -41,14 +42,6 @@ public class Car {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public boolean isSold() {
-        return sold;
-    }
-
-    public void setSold(boolean sold) {
-        this.sold = sold;
     }
 
     public byte[] getPhoto() {

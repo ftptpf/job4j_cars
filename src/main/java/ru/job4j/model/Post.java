@@ -11,6 +11,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private LocalDateTime created;
+    private boolean sold;
     @OneToOne
     @JoinColumn(name = "driver_id")
     private Driver driver;
