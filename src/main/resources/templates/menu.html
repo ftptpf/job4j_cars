@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="menu">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Площадка по продаже автомобилей</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" th:href="@{/index}">Все авто</a>
+                    <a class="nav-item nav-link" th:href="@{/actual}">В продаже</a>
+                    <a class="nav-item nav-link" th:href="@{/sold}">Проданы</a>
+                    <a class="nav-item nav-link" th:href="@{/newposts}">Новые объявления</a>
+                    <a class="nav-item nav-link" th:href="@{/addpost}">Добавить объявление</a>
+                    <a class="nav-item nav-link" th:if="${user.name == 'Гость'}" th:href="@{/registration}">Регистрация</a>
+                    <a class="nav-item nav-link" th:if="${user.name == 'Гость'}" th:href="@{/login}">
+                        <span th:text="${user.name}"></span>
+                        <span> | Войти</span>
+                    </a>
+                    <a class="nav-item nav-link" th:if="${user.name != 'Гость'}" th:href="@{/logout}">
+                        <span th:text="${user.name}"></span>
+                        <span> | Выйти</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</body>
+</html>

@@ -26,7 +26,7 @@ public class Car {
             @JoinColumn(name = "driver_id", nullable = false, updatable = false)},
             inverseJoinColumns = {
             @JoinColumn(name = "car_id", nullable = false, updatable = false)})
-    private Set<Driver> drivers = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
     public int getId() {
         return id;
@@ -68,8 +68,8 @@ public class Car {
         this.engine = engine;
     }
 
-    public void addDriver(Driver driver) {
-        drivers.add(driver);
+    public void addDriver(User user) {
+        users.add(user);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package ru.job4j.util;
 
 import org.springframework.ui.Model;
-import ru.job4j.model.Driver;
+import ru.job4j.model.User;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,11 +11,11 @@ public class GuestUtil {
     }
 
     public static void checkAndSetGuestName(Model model, HttpSession session) {
-        Driver driver = (Driver) session.getAttribute("driver");
-        if (driver == null) {
-            driver = new Driver();
-            driver.setName("Гость");
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            user = new User();
+            user.setName("Гость");
         }
-        model.addAttribute("driver", driver);
+        model.addAttribute("user", user);
     }
 }

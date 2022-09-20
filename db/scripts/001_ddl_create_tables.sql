@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS brands (
     name VARCHAR(64) UNIQUE NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS drivers (
+CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY ,
     name VARCHAR(128) NOT NULL ,
     email VARCHAR(128) UNIQUE NOT NULL ,
@@ -32,13 +32,13 @@ CREATE TABLE IF NOT EXISTS cars (
 
 CREATE TABLE IF NOT EXISTS history_owner (
     id SERIAL PRIMARY KEY ,
-    driver_id INT NOT NULL REFERENCES drivers(id) ,
+    user_id INT NOT NULL REFERENCES users(id) ,
     car_id INT NOT NULL REFERENCES cars(id)
 );
 
 CREATE TABLE IF NOT EXISTS posts (
     id SERIAL PRIMARY KEY ,
     created TIMESTAMP ,
-    driver_id INT NOT NULL REFERENCES drivers(id) ,
+    user_id INT NOT NULL REFERENCES users(id) ,
     car_id INT NOT NULL REFERENCES cars(id)
 );

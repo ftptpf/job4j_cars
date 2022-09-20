@@ -3,36 +3,36 @@ package ru.job4j.persistence;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
-import ru.job4j.model.Driver;
+import ru.job4j.model.User;
 import ru.job4j.util.DbConnect;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class DriverDbStore {
+public class UserDbStore {
 
     private final SessionFactory sf;
 
-    public DriverDbStore(SessionFactory sf) {
+    public UserDbStore(SessionFactory sf) {
         this.sf = sf;
     }
 
-    public Optional<Driver> create(Driver driver) {
+    public Optional<User> create(User user) {
         try {
-            DbConnect.tx(session -> session.save(driver), sf);
+            DbConnect.tx(session -> session.save(user), sf);
         } catch (HibernateException e) {
             e.printStackTrace();
             return Optional.empty();
         }
-        return Optional.of(driver);
+        return Optional.of(user);
     }
 
-    public List<Driver> findByLoginAndPassword(String email, String password) {
+    public List<User> findByLoginAndPassword(String email, String password) {
         return DbConnect.tx(session -> session.createQuery(
-                        "FROM Driver WHERE email = :driverEmail AND password = :driverPassword")
-                .setParameter("driverEmail", email)
-                .setParameter("driverPassword", password)
+                        "FROM User WHERE email = :userEmail AND password = :userPassword")
+                .setParameter("userEmail", email)
+                .setParameter("userPassword", password)
                 .list(), sf);
     }
 

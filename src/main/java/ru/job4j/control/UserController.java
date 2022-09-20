@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.job4j.model.Driver;
-import ru.job4j.service.DriverService;
+import ru.job4j.model.User;
+import ru.job4j.service.UserService;
 import ru.job4j.util.GuestUtil;
 
 import javax.servlet.http.HttpSession;
@@ -15,11 +15,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class DriverController {
+public class UserController {
 
-    private final DriverService service;
+    private final UserService service;
 
-    public DriverController(DriverService service) {
+    public UserController(UserService service) {
         this.service = service;
     }
 
@@ -30,16 +30,16 @@ public class DriverController {
     }
 
     @PostMapping("/registration")
-    public String registration(Model model, @ModelAttribute Driver driver) {
-        Optional<Driver> dbUser = service.create(driver);
+    public String registration(Model model, @ModelAttribute User user) {
+        Optional<User> dbUser = service.create(user);
         if (dbUser.isEmpty()) {
             model.addAttribute("message", "Ошибка регистрации. У пользователя должен быть уникальный логин.");
         } else {
             model.addAttribute("message", "Пользователь успешно зарегистрирован");
         }
-        Driver guestDriver = new Driver();
-        guestDriver.setName("Гость");
-        model.addAttribute("driver", guestDriver);
+        User guestUser = new User();
+        guestUser.setName("Гость");
+        model.addAttribute("user", guestUser);
         return "registration";
     }
 
@@ -51,15 +51,15 @@ public class DriverController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute Driver driver, HttpSession session) {
-        List<Driver> list = service.findByLoginAndPassword(
-                driver.getEmail(),
-                driver.getPassword());
+    public String login(@ModelAttribute User user, HttpSession session) {
+        List<User> list = service.findByLoginAndPassword(
+                user.getEmail(),
+                user.getPassword());
         if (list.isEmpty()) {
             return "redirect:/login?fail=true";
         }
-        Driver driverDb = list.get(0);
-        session.setAttribute("driver", driverDb);
+        User userDb = list.get(0);
+        session.setAttribute("user", userDb);
         return "redirect:/index";
     }
 
