@@ -18,35 +18,11 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Задания</title>
+    <title>Площадка по продаже автомобилей</title>
 </head>
 <body>
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Площадка по продаже автомобилей</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" th:href="@{/index}">Все авто</a>
-                <a class="nav-item nav-link" th:href="@{/actual}">В продаже</a>
-                <a class="nav-item nav-link" th:href="@{/sold}">Проданы</a>
-                <a class="nav-item nav-link" th:href="@{/newposts}">Новые объявления</a>
-                <a class="nav-item nav-link" th:href="@{/addpost}">Добавить объявление</a>
-                <a class="nav-item nav-link" th:if="${user.name == 'Гость'}" th:href="@{/registration}">Регистрация</a>
-                <a class="nav-item nav-link" th:if="${user.name == 'Гость'}" th:href="@{/login}">
-                    <span th:text="${user.name}"></span>
-                    <span> | Войти</span>
-                </a>
-                <a class="nav-item nav-link" th:if="${user.name != 'Гость'}" th:href="@{/logout}">
-                    <span th:text="${user.name}"></span>
-                    <span> | Выйти</span>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <div th:insert="menu"></div>
     <div class="row">
         <div>
             <div th:if="${message != null and message != 'Пользователь успешно зарегистрирован'}" class="alert alert-danger" role="alert" th:text="${message}"></div>

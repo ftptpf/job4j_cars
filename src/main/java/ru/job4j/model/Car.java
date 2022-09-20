@@ -23,7 +23,7 @@ public class Car {
     private Engine engine;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "history_owner", joinColumns = {
-            @JoinColumn(name = "driver_id", nullable = false, updatable = false)},
+            @JoinColumn(name = "user_id", nullable = false, updatable = false)},
             inverseJoinColumns = {
             @JoinColumn(name = "car_id", nullable = false, updatable = false)})
     private Set<User> users = new HashSet<>();

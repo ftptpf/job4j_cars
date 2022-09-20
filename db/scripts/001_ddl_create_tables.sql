@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS bodies (
 CREATE TABLE IF NOT EXISTS cars (
     id SERIAL PRIMARY KEY ,
     description VARCHAR(256) ,
-    sold BOOLEAN ,
+    year INTEGER ,
+    kilometer INTEGER ,
     photo BYTEA ,
     engine_id INT NOT NULL UNIQUE REFERENCES engines(id) ,
     brand_id INT NOT NULL UNIQUE REFERENCES brands(id),
@@ -39,6 +40,7 @@ CREATE TABLE IF NOT EXISTS history_owner (
 CREATE TABLE IF NOT EXISTS posts (
     id SERIAL PRIMARY KEY ,
     created TIMESTAMP ,
+    sold BOOLEAN ,
     user_id INT NOT NULL REFERENCES users(id) ,
     car_id INT NOT NULL REFERENCES cars(id)
 );

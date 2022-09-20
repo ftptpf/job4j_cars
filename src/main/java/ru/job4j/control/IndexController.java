@@ -20,7 +20,7 @@ public class IndexController {
     @GetMapping("/index")
     public String index(Model model, HttpSession session) {
         GuestUtil.checkAndSetGuestName(model, session);
-        model.addAttribute("items", service.findAll());
+        model.addAttribute("posts", service.findAll());
         return "index";
     }
 }
