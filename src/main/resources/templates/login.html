@@ -24,12 +24,6 @@
 <div class="container">
     <div th:insert="menu"></div>
     <div class="row">
-        <div>
-            <div th:if="${message != null and message != 'Пользователь успешно зарегистрирован'}" class="alert alert-danger" role="alert" th:text="${message}"></div>
-            <div th:if="${message == 'Пользователь успешно зарегистрирован'}" class="alert alert-success" role="alert" th:text="${message}"></div>
-        </div>
-    </div>
-    <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
                 Авторизация

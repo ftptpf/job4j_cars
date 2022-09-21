@@ -16,7 +16,7 @@
                     <a class="nav-item nav-link" th:href="@{/actual}">В продаже</a>
                     <a class="nav-item nav-link" th:href="@{/sold}">Проданы</a>
                     <a class="nav-item nav-link" th:href="@{/newposts}">Новые объявления</a>
-                    <a class="nav-item nav-link" th:href="@{/addpost}">Добавить объявление</a>
+                    <a class="nav-item nav-link" th:href="@{/add}">Добавить объявление</a>
                     <a class="nav-item nav-link" th:if="${user.name == 'Гость'}" th:href="@{/registration}">Регистрация</a>
                     <a class="nav-item nav-link" th:if="${user.name == 'Гость'}" th:href="@{/login}">
                         <span th:text="${user.name}"></span>

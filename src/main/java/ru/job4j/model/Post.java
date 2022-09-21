@@ -11,8 +11,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private LocalDateTime created;
+    private String description;
+    private int price;
     private boolean sold;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
     @OneToOne
