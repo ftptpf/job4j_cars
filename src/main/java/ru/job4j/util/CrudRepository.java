@@ -2,6 +2,7 @@ package ru.job4j.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+@Component
 public class CrudRepository {
     private final SessionFactory sf;
 

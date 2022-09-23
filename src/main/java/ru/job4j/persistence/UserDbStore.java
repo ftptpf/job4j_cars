@@ -3,7 +3,6 @@ package ru.job4j.persistence;
 import org.springframework.stereotype.Repository;
 import ru.job4j.model.User;
 import ru.job4j.util.CrudRepository;
-import ru.job4j.util.DbConnect;
 
 import java.util.List;
 import java.util.Map;
@@ -24,11 +23,6 @@ public class UserDbStore {
     }
 
     public List<User> findByLoginAndPassword(String email, String password) {
-/*        return DbConnect.tx(session -> session.createQuery(
-                        "FROM User WHERE email = :userEmail AND password = :userPassword")
-                .setParameter("userEmail", email)
-                .setParameter("userPassword", password)
-                .list(), sf);*/
         return crudRepository.query("FROM User WHERE email = :userEmail AND password = :userPassword",
                 User.class,
                 Map.of("userEmail", email, "userPassword", password)
