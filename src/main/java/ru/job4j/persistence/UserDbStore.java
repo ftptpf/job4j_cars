@@ -21,6 +21,7 @@ public class UserDbStore {
         crudRepository.run(session -> session.persist(user));
         return Optional.ofNullable(user);
     }
+    // TODO Optional exception when user exist
 
     public List<User> findByLoginAndPassword(String email, String password) {
         return crudRepository.query("FROM User WHERE email = :userEmail AND password = :userPassword",
