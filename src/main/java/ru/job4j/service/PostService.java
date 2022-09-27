@@ -2,7 +2,6 @@ package ru.job4j.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.model.Post;
-import ru.job4j.model.User;
 import ru.job4j.persistence.PostDbStore;
 
 import java.util.List;
@@ -16,12 +15,12 @@ public class PostService {
         this.store = store;
     }
 
-    public User saveOrUpdate(User user) {
-        return store.saveOrUpdate(user);
+    public Post saveOrUpdate(Post post) {
+        return store.saveOrUpdate(post);
     }
 
-    public void delete(User user) {
-        store.delete(user);
+    public void delete(Post post) {
+        store.delete(post);
     }
 
     public List<Post> findAll() {
