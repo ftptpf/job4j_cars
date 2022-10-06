@@ -24,7 +24,7 @@ public class UserDbStore {
     // TODO Optional exception when user exist
 
     public void deleteAll() {
-        //crudRepository.run(session -> session.);
+        crudRepository.run("DELETE FROM User");
     }
 
     public List<User> findAll() {

@@ -37,6 +37,14 @@ public class CrudRepository {
         run(command);
     }
 
+    public void run(String query) {
+        Consumer<Session> command = session -> {
+            var sq = session.createQuery(query);
+            sq.executeUpdate();
+        };
+        run(command);
+    }
+
     public <T> List<T> query(String query, Class<T> cl) {
         Function<Session, List<T>> command = session -> session
                 .createQuery(query, cl)
