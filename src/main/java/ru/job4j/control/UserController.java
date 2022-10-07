@@ -32,7 +32,7 @@ public class UserController {
     @PostMapping("/registration")
     public String registration(Model model, @ModelAttribute User user) {
         Optional<User> dbUser = service.create(user);
-        if (user.getId() == 0) {
+        if (dbUser.isEmpty()) {
             model.addAttribute("message", "Ошибка регистрации. У пользователя должен быть уникальный логин.");
         } else {
             model.addAttribute("message", "Пользователь успешно зарегистрирован");
