@@ -75,6 +75,14 @@ public class CrudRepository {
         return tx(command);
     }
 
+    public <T> Optional<T> optional(String query, Class<T> cl) {
+        Function<Session, Optional<T>> command = session -> {
+            var sq = session.createQuery(query, cl);
+            return Optional.ofNullable(sq.getSingleResult());
+        };
+        return tx(command);
+    }
+
     public <T> T tx(Function<Session, T> command) {
         var session = sf.openSession();
         try (session) {

@@ -66,14 +66,9 @@ class UserDbStoreTest {
 
         Optional<User> optionalUser1 = store.create(user1);
         Optional<User> optionalUser2 = store.create(user2);
-        List<User> userList = store.findAll();
-        assertThat(userList)
-                .isNotEmpty()
-                .hasSize(1);
 
-        List<User> userListDb = store.findByLoginAndPassword("oleg@oleg.ru", "stepan");
-        assertThat(userListDb)
-                .isEmpty();
+        assertThat(optionalUser1.isEmpty()).isFalse();
+        assertThat(optionalUser2.isEmpty()).isTrue();
 
         store.deleteAll();
 
@@ -142,7 +137,6 @@ class UserDbStoreTest {
                 .isNotEmpty()
                 .hasSize(1);
 
-
         store.deleteAll();
     }
 
@@ -166,6 +160,5 @@ class UserDbStoreTest {
 
         store.deleteAll();
     }
-
 
 }

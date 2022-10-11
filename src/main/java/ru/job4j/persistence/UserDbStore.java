@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import ru.job4j.model.User;
 import ru.job4j.util.CrudRepository;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -18,8 +19,12 @@ public class UserDbStore {
     }
 
     public Optional<User> create(User user) {
-        crudRepository.run(session -> session.persist(user));
-        return Optional.ofNullable(user);
+        return crudRepository.optional(
+                "INSERT INTO User (name, email, password) SELECT (:fName, :fEmail, :fPassword) FROM User",
+                User.class,
+                Map.of("fName", user.getName(), "fEmail", user.getEmail(), "fPassword", user.getPassword()));
+/*        crudRepository.run(session -> session.persist(user));
+        return Optional.ofNullable(user);*/
     }
     // TODO Optional exception when user exist
 
