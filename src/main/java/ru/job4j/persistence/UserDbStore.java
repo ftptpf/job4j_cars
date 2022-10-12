@@ -19,10 +19,11 @@ public class UserDbStore {
     }
 
     public Optional<User> create(User user) {
-        return crudRepository.optional(
+        return Optional.ofNullable(crudRepository.tx(session -> session.save(user)));
+        /*return crudRepository.optional(
                 "INSERT INTO User (name, email, password) SELECT (:fName, :fEmail, :fPassword) FROM User",
                 User.class,
-                Map.of("fName", user.getName(), "fEmail", user.getEmail(), "fPassword", user.getPassword()));
+                Map.of("fName", user.getName(), "fEmail", user.getEmail(), "fPassword", user.getPassword()));*/
 /*        crudRepository.run(session -> session.persist(user));
         return Optional.ofNullable(user);*/
     }
