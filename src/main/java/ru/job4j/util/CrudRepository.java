@@ -83,6 +83,14 @@ public class CrudRepository {
         return tx(command);
     }
 
+    public <T> Optional<T> optionalSave(T object) {
+        Function<Session, Optional<T>> command = session -> {
+            var sq = session.save(object);
+            return Optional.ofNullable(object);
+        };
+        return tx(command);
+    }
+
     public <T> T tx(Function<Session, T> command) {
         var session = sf.openSession();
         try (session) {
