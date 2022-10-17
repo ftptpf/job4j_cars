@@ -18,7 +18,15 @@ public class UserDbStore {
     }
 
     public Optional<User> create(User user) {
-        return crudRepository.optionalSave(user);
+        return crudRepository.tx(session -> {
+            int id = (int) session.save(user);
+            if (id == 0) {
+                return Optional.empty();
+            }
+            return Optional.of(user);
+
+        });
+/*        return crudRepository.optionalSave(user);*/
 /*        return Optional.ofNullable(crudRepository.tx(session -> session.save(user)));
         return crudRepository.optional(
                 "INSERT INTO User (name, email, password) SELECT (:fName, :fEmail, :fPassword) FROM User",
