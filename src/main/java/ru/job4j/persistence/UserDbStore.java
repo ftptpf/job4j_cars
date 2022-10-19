@@ -18,28 +18,14 @@ public class UserDbStore {
     }
 
     public Optional<User> create(User user) {
-        return crudRepository.tx(session -> {
-            int id = (int) session.save(user);
-            if (id == 0) {
-                return Optional.empty();
-            }
-            return Optional.of(user);
-
-        });
-/*        return crudRepository.optionalSave(user);*/
-/*        return Optional.ofNullable(crudRepository.tx(session -> session.save(user)));
-        return crudRepository.optional(
-                "INSERT INTO User (name, email, password) SELECT (:fName, :fEmail, :fPassword) FROM User",
-                User.class,
-                Map.of("fName", user.getName(), "fEmail", user.getEmail(), "fPassword", user.getPassword()));
-        crudRepository.run(session -> session.persist(user));
-        return Optional.ofNullable(user);*/
+        try {
+            crudRepository.tx(session -> session.save(user));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Optional.empty();
+        }
+        return Optional.of(user);
     }
-    // TODO Optional exception when user exist
-
-/*    public User create(User user) {
-        return crudRepository.tx()
-    }*/
 
     public void deleteAll() {
         crudRepository.run("DELETE FROM User");
@@ -49,8 +35,9 @@ public class UserDbStore {
         return crudRepository.query("FROM User", User.class);
     }
 
-    public List<User> findByLoginAndPassword(String email, String password) {
-        return crudRepository.query("FROM User WHERE email = :userEmail AND password = :userPassword",
+    public Optional<User> findByLoginAndPassword(String email, String password) {
+        return crudRepository.optional(
+                "FROM User WHERE email = :userEmail AND password = :userPassword",
                 User.class,
                 Map.of("userEmail", email, "userPassword", password)
         );

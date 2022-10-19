@@ -63,7 +63,6 @@ public class CrudRepository {
         return tx(command);
     }
 
-
     public <T> Optional<T> optional(String query, Class<T> cl, Map<String, Object> args) {
         Function<Session, Optional<T>> command = session -> {
             var sq = session.createQuery(query, cl);
@@ -83,17 +82,9 @@ public class CrudRepository {
         return tx(command);
     }
 
-    public <T> Optional<T> optionalSave(T object) {
-        Function<Session, Optional<T>> command = session -> {
-            var sq = session.save(object);
-            return Optional.ofNullable(object);
-        };
-        return tx(command);
-    }
-
     public <T> T tx(Function<Session, T> command) {
         var session = sf.openSession();
-        try (session) {
+        try {
             var tx = session.beginTransaction();
             T rsl = command.apply(session);
             tx.commit();
@@ -104,6 +95,8 @@ public class CrudRepository {
                 tx.rollback();
             }
             throw e;
+        } finally {
+            session.close();
         }
     }
 }

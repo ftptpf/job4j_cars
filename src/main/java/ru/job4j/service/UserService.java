@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import ru.job4j.model.User;
 import ru.job4j.persistence.UserDbStore;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,7 +19,7 @@ public class UserService {
         return store.create(user);
     }
 
-    public List<User> findByLoginAndPassword(String email, String password) {
+    public Optional<User> findByLoginAndPassword(String email, String password) {
         return store.findByLoginAndPassword(email, password);
     }
 }

@@ -132,10 +132,9 @@ class UserDbStoreTest {
 
         store.create(user1);
         store.create(user2);
-        List<User> userListDb = store.findByLoginAndPassword("oleg@oleg.ru", "oleg");
-        assertThat(userListDb)
-                .isNotEmpty()
-                .hasSize(1);
+        Optional<User> userDb = store.findByLoginAndPassword("oleg@oleg.ru", "oleg");
+        assertThat(userDb.get())
+                .isEqualTo(user1);
 
         store.deleteAll();
     }
@@ -154,9 +153,9 @@ class UserDbStoreTest {
 
         store.create(user1);
         store.create(user2);
-        List<User> userListDb = store.findByLoginAndPassword("oleg@oleg.ru", "not correct password");
-        assertThat(userListDb)
-                .isEmpty();
+        Optional<User> userDb = store.findByLoginAndPassword("oleg@oleg.ru", "not correct password");
+        assertThat(userDb.isEmpty())
+                .isTrue();
 
         store.deleteAll();
     }

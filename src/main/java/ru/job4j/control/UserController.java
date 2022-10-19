@@ -11,7 +11,6 @@ import ru.job4j.service.UserService;
 import ru.job4j.util.GuestUtil;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -52,14 +51,13 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute User user, HttpSession session) {
-        List<User> list = service.findByLoginAndPassword(
+        Optional<User> dbUser = service.findByLoginAndPassword(
                 user.getEmail(),
                 user.getPassword());
-        if (list.isEmpty()) {
+        if (dbUser.isEmpty()) {
             return "redirect:/login?fail=true";
         }
-        User userDb = list.get(0);
-        session.setAttribute("user", userDb);
+        session.setAttribute("user", dbUser.get());
         return "redirect:/index";
     }
 
@@ -68,7 +66,5 @@ public class UserController {
         session.invalidate();
         return "redirect:/login";
     }
-
-
 
 }
