@@ -4,6 +4,8 @@ import org.springframework.stereotype.Repository;
 import ru.job4j.model.Car;
 import ru.job4j.util.CrudRepository;
 
+import java.util.List;
+
 @Repository
 public class CarDbStore {
 
@@ -26,10 +28,18 @@ public class CarDbStore {
         });
     }
 
+    public void deleteAll() {
+        crudRepository.run("DELETE FROM Car");
+    }
+
     public Car findById(int id) {
         return (Car) crudRepository.tx(session -> session.createQuery(
                         "SELECT c FROM Car c WHERE c.id = :fId")
                 .setParameter("fId", id)
                 .uniqueResult());
+    }
+
+    public List<Car> findAll() {
+        return crudRepository.query("FROM Car", Car.class);
     }
 }

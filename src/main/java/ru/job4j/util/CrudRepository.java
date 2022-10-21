@@ -69,7 +69,7 @@ public class CrudRepository {
             for (Map.Entry<String, Object> arg : args.entrySet()) {
                 sq.setParameter(arg.getKey(), arg.getValue());
             }
-            return Optional.ofNullable(sq.getSingleResult());
+            return sq.uniqueResultOptional();
         };
         return tx(command);
     }
@@ -77,7 +77,7 @@ public class CrudRepository {
     public <T> Optional<T> optional(String query, Class<T> cl) {
         Function<Session, Optional<T>> command = session -> {
             var sq = session.createQuery(query, cl);
-            return Optional.ofNullable(sq.getSingleResult());
+            return sq.uniqueResultOptional();
         };
         return tx(command);
     }
