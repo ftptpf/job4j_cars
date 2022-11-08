@@ -39,5 +39,13 @@ public class PostService {
         return store.findAllNew();
     }
 
+    public List<Post> findAllSpecificBrand(String brand) {
+        return store.findAllSpecificBrand(brand);
+    }
+
+    public List<Post> findAllPostsWithPhoto() {
+        return store.findAllPostsWithPhoto();
+    }
+
 
 }

@@ -23,7 +23,7 @@ class CarDbStoreTest {
         store.deleteAll();
     }
 
-    @Test
+/*    @Test
     void whenAddNewCar() {
         CarDbStore store = new CarDbStore(new CrudRepository(SESSION_FACTORY));
         Car car = new Car();
@@ -41,6 +41,6 @@ class CarDbStoreTest {
                 .isEqualTo("some car");
 
         store.deleteAll();
-    }
+    }*/
 
 }
