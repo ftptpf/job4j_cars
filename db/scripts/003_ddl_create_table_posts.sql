@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS posts (
     id SERIAL PRIMARY KEY ,
     description TEXT ,
     created TIMESTAMP ,
-    price INTEGER ,
+    price BIGINT ,
     sold BOOLEAN ,
     user_id INT NOT NULL REFERENCES users(id) ,
     car_id INT NOT NULL REFERENCES cars(id)

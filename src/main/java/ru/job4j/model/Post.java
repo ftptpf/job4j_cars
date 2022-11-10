@@ -2,6 +2,8 @@ package ru.job4j.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -12,7 +14,7 @@ public class Post {
     private int id;
     private LocalDateTime created;
     private String description;
-    private int price;
+    private long price;
     private boolean sold;
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -20,6 +22,9 @@ public class Post {
     @OneToOne
     @JoinColumn(name = "car_id")
     private Car car;
+    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "price_history_id")
+    private List<PriceHistory> priceHistory = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -51,6 +56,24 @@ public class Post {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public List<PriceHistory> getPriceHistory() {
+        return priceHistory;
+    }
+
+    public void setPriceHistory(List<PriceHistory> priceHistory) {
+        this.priceHistory = priceHistory;
+    }
+
+    public void addPriceHistory(PriceHistory history) {
+        priceHistory.add(history);
+        history.setPost(this);
+    }
+
+    public void removePriceHistory(PriceHistory history) {
+        priceHistory.remove(history);
+        history.setPost(null);
     }
 
     @Override
