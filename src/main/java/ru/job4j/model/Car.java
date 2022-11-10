@@ -12,14 +12,15 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String description;
+    @Column(name = "car_year")
     private int year;
     private int kilometer;
     private byte[] photo;
     @ManyToOne
-    @JoinColumn(name = "brand_id", foreignKey = @ForeignKey(name = "BRAND_ID_FK"))
+    @JoinColumn(name = "brand_id", foreignKey = @ForeignKey(name = "BRAND_ID_FK"), nullable = false)
     private Brand brand;
     @ManyToOne
-    @JoinColumn(name = "engine_id", foreignKey = @ForeignKey(name = "ENGINE_ID_FK"))
+    @JoinColumn(name = "engine_id", foreignKey = @ForeignKey(name = "ENGINE_ID_FK"), nullable = false)
     private Engine engine;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "history_owner", joinColumns = {
@@ -42,6 +43,22 @@ public class Car {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getKilometer() {
+        return kilometer;
+    }
+
+    public void setKilometer(int kilometer) {
+        this.kilometer = kilometer;
     }
 
     public byte[] getPhoto() {
@@ -68,9 +85,16 @@ public class Car {
         this.engine = engine;
     }
 
-    public void addDriver(User user) {
-        users.add(user);
+    public Set<User> getUsers() {
+        return users;
     }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+
+
 
     @Override
     public boolean equals(Object o) {

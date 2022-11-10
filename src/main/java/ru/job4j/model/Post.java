@@ -23,7 +23,7 @@ public class Post {
     @JoinColumn(name = "car_id")
     private Car car;
     @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "price_history_id")
+    @JoinColumn(name = "price_history_id", nullable = false)
     private List<PriceHistory> priceHistory = new ArrayList<>();
 
     public int getId() {
