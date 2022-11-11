@@ -2,7 +2,7 @@ package ru.job4j.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.model.Post;
-import ru.job4j.persistence.PostDbStore;
+import ru.job4j.repository.PostDbStore;
 
 import java.util.List;
 

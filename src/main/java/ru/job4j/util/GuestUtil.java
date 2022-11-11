@@ -14,7 +14,7 @@ public class GuestUtil {
         User user = (User) session.getAttribute("user");
         if (user == null) {
             user = new User();
-            user.setName("Гость");
+            user.setLogin("Гость");
         }
         model.addAttribute("user", user);
     }

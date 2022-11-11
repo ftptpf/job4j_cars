@@ -9,9 +9,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    @Column(unique = true)
-    private String email;
+    @Column(unique = true, nullable = false)
+    private String login;
+    @Column(nullable = false)
     private String password;
 
     public int getId() {
@@ -22,20 +22,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLogin() {
+        return login;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -55,11 +47,11 @@ public class User {
             return false;
         }
         User user = (User) o;
-        return id == user.id && Objects.equals(name, user.name) && Objects.equals(email, user.email);
+        return id == user.id && Objects.equals(login, user.login);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email);
+        return Objects.hash(id, login);
     }
 }

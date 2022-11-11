@@ -37,7 +37,7 @@ public class UserController {
             model.addAttribute("message", "Пользователь успешно зарегистрирован");
         }
         User guestUser = new User();
-        guestUser.setName("Гость");
+        guestUser.setLogin("Гость");
         model.addAttribute("user", guestUser);
         return "registration";
     }
@@ -52,7 +52,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(@ModelAttribute User user, HttpSession session) {
         Optional<User> dbUser = service.findByLoginAndPassword(
-                user.getEmail(),
+                user.getLogin(),
                 user.getPassword());
         if (dbUser.isEmpty()) {
             return "redirect:/login?fail=true";

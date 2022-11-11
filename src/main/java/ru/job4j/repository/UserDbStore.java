@@ -1,4 +1,4 @@
-package ru.job4j.persistence;
+package ru.job4j.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.model.User;
@@ -35,11 +35,11 @@ public class UserDbStore {
         return crudRepository.query("FROM User", User.class);
     }
 
-    public Optional<User> findByLoginAndPassword(String email, String password) {
+    public Optional<User> findByLoginAndPassword(String login, String password) {
         return crudRepository.optional(
-                "FROM User WHERE email = :userEmail AND password = :userPassword",
+                "FROM User WHERE login = :userLogin AND password = :userPassword",
                 User.class,
-                Map.of("userEmail", email, "userPassword", password)
+                Map.of("userLogin", login, "userPassword", password)
         );
     }
 

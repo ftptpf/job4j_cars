@@ -1,7 +1,7 @@
 package ru.job4j.service;
 
 import org.springframework.stereotype.Service;
-import ru.job4j.persistence.CarDbStore;
+import ru.job4j.repository.CarDbStore;
 
 @Service
 public class CarService {

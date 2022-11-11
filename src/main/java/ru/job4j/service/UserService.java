@@ -2,7 +2,7 @@ package ru.job4j.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.model.User;
-import ru.job4j.persistence.UserDbStore;
+import ru.job4j.repository.UserDbStore;
 
 import java.util.Optional;
 

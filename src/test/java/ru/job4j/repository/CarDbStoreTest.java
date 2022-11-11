@@ -1,17 +1,11 @@
-package ru.job4j.persistence;
+package ru.job4j.repository;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import ru.job4j.model.Car;
 import ru.job4j.util.CrudRepository;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
 
 class CarDbStoreTest {
     private static final StandardServiceRegistry REGISTRY = new StandardServiceRegistryBuilder().configure().build();

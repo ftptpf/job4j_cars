@@ -1,4 +1,4 @@
-package ru.job4j.persistence;
+package ru.job4j.repository;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -28,8 +28,7 @@ class UserDbStoreTest {
     public void whenAddNewUser() {
         UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
         User user = new User();
-        user.setName("Oleg");
-        user.setEmail("oleg@oleg.ru");
+        user.setLogin("Oleg");
         user.setPassword("oleg");
 
         store.create(user);
@@ -40,11 +39,8 @@ class UserDbStoreTest {
 
         User userFromBase = userList.get(0);
         assertThat(userFromBase
-                .getName())
+                .getLogin())
                 .isEqualTo("Oleg");
-        assertThat(userFromBase
-                .getEmail())
-                .isEqualTo("oleg@oleg.ru");
         assertThat(userFromBase
                 .getPassword())
                 .isEqualTo("oleg");
@@ -56,12 +52,10 @@ class UserDbStoreTest {
     public void whenAddNewUserWithSameEmail() {
         UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
-        user1.setName("Oleg");
-        user1.setEmail("oleg@oleg.ru");
+        user1.setLogin("Oleg");
         user1.setPassword("oleg");
         User user2 = new User();
-        user2.setName("Stepan");
-        user2.setEmail("oleg@oleg.ru");
+        user2.setLogin("Stepan");
         user2.setPassword("stepan");
 
         Optional<User> optionalUser1 = store.create(user1);
@@ -78,12 +72,10 @@ class UserDbStoreTest {
     public void whenFindAll() {
         UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
-        user1.setName("Oleg");
-        user1.setEmail("oleg@oleg.ru");
+        user1.setLogin("Oleg");
         user1.setPassword("oleg");
         User user2 = new User();
-        user2.setName("Stepan");
-        user2.setEmail("stepan@stepan.ru");
+        user2.setLogin("Stepan");
         user2.setPassword("stepan");
 
         store.create(user1);
@@ -95,22 +87,16 @@ class UserDbStoreTest {
 
         User userFromBase1 = userList.get(0);
         assertThat(userFromBase1
-                .getName())
+                .getLogin())
                 .isEqualTo("Oleg");
-        assertThat(userFromBase1
-                .getEmail())
-                .isEqualTo("oleg@oleg.ru");
         assertThat(userFromBase1
                 .getPassword())
                 .isEqualTo("oleg");
 
         User userFromBase2 = userList.get(1);
         assertThat(userFromBase2
-                .getName())
+                .getLogin())
                 .isEqualTo("Stepan");
-        assertThat(userFromBase2
-                .getEmail())
-                .isEqualTo("stepan@stepan.ru");
         assertThat(userFromBase2
                 .getPassword())
                 .isEqualTo("stepan");
@@ -122,17 +108,15 @@ class UserDbStoreTest {
     public void whenFindUserByEmailAndPassword() {
         UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
-        user1.setName("Oleg");
-        user1.setEmail("oleg@oleg.ru");
+        user1.setLogin("Oleg");
         user1.setPassword("oleg");
         User user2 = new User();
-        user2.setName("Stepan");
-        user2.setEmail("stepan@stepan.ru");
+        user2.setLogin("Stepan");
         user2.setPassword("stepan");
 
         store.create(user1);
         store.create(user2);
-        Optional<User> userDb = store.findByLoginAndPassword("oleg@oleg.ru", "oleg");
+        Optional<User> userDb = store.findByLoginAndPassword("Oleg", "oleg");
         assertThat(userDb.get())
                 .isEqualTo(user1);
 
@@ -143,17 +127,15 @@ class UserDbStoreTest {
     public void whenNotFindUserByEmailAndPassword() {
         UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
-        user1.setName("Oleg");
-        user1.setEmail("oleg@oleg.ru");
+        user1.setLogin("Oleg");
         user1.setPassword("oleg");
         User user2 = new User();
-        user2.setName("Stepan");
-        user2.setEmail("stepan@stepan.ru");
+        user2.setLogin("Stepan");
         user2.setPassword("stepan");
 
         store.create(user1);
         store.create(user2);
-        Optional<User> userDb = store.findByLoginAndPassword("oleg@oleg.ru", "not correct password");
+        Optional<User> userDb = store.findByLoginAndPassword("Oleg", "not correct password");
         assertThat(userDb.isEmpty())
                 .isTrue();
 
