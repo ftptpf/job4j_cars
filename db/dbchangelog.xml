@@ -12,6 +12,6 @@
 	<include file="scripts/002_ddl_create_tables_cars.sql" relativeToChangelogFile="true"/>
 	<include file="scripts/003_ddl_create_table_posts.sql" relativeToChangelogFile="true"/>
 	<include file="scripts/004_ddl_create_table_history_owners.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/005_ddl_create_table_price_history.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/005_ddl_create_table_price_histories.sql" relativeToChangelogFile="true"/>
 	<include file="scripts/006_ddl_create_table_participates.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

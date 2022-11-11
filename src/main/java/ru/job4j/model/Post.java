@@ -12,18 +12,18 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String text;
     private LocalDateTime created;
-    private String description;
     private long price;
     private boolean sold;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     @OneToOne
-    @JoinColumn(name = "car_id")
+    @JoinColumn(name = "car_id", nullable = false)
     private Car car;
     @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "price_history_id", nullable = false)
+    @JoinColumn(name = "price_histories_id", nullable = false)
     private List<PriceHistory> priceHistory = new ArrayList<>();
 
     public int getId() {
@@ -34,12 +34,36 @@ public class Post {
         this.id = id;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
     public LocalDateTime getCreated() {
         return created;
     }
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+    public boolean isSold() {
+        return sold;
+    }
+
+    public void setSold(boolean sold) {
+        this.sold = sold;
     }
 
     public User getUser() {
@@ -56,14 +80,6 @@ public class Post {
 
     public void setCar(Car car) {
         this.car = car;
-    }
-
-    public List<PriceHistory> getPriceHistory() {
-        return priceHistory;
-    }
-
-    public void setPriceHistory(List<PriceHistory> priceHistory) {
-        this.priceHistory = priceHistory;
     }
 
     public void addPriceHistory(PriceHistory history) {

@@ -5,14 +5,16 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "price_history")
+@Table(name = "price_histories")
 public class PriceHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private long before;
+    @Column(nullable = false)
     private long after;
-    private LocalDateTime created;
+    private LocalDateTime created = LocalDateTime.now();
     @ManyToOne
     private Post post;
 
