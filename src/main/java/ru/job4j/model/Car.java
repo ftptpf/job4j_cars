@@ -22,12 +22,15 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "engine_id", foreignKey = @ForeignKey(name = "ENGINE_ID_FK"), nullable = false)
     private Engine engine;
+    @ManyToOne
+    @JoinColumn(name = "body_id", foreignKey = @ForeignKey(name = "BODY_ID_FK"), nullable = false)
+    private Engine body;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "history_owner", joinColumns = {
-            @JoinColumn(name = "user_id", nullable = false, updatable = false)},
+            @JoinColumn(name = "driver_id", nullable = false, updatable = false)},
             inverseJoinColumns = {
             @JoinColumn(name = "car_id", nullable = false, updatable = false)})
-    private Set<User> users = new HashSet<>();
+    Set<Driver> drivers = new HashSet<>();
 
     public int getId() {
         return id;
@@ -85,6 +88,14 @@ public class Car {
         this.engine = engine;
     }
 
+    public Engine getBody() {
+        return body;
+    }
+
+    public void setBody(Engine body) {
+        this.body = body;
+    }
+
     public Set<User> getUsers() {
         return users;
     }
@@ -105,11 +116,14 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return id == car.id && Objects.equals(brand, car.brand) && Objects.equals(engine, car.engine);
+        return id == car.id
+                && Objects.equals(brand, car.brand)
+                && Objects.equals(engine, car.engine)
+                && Objects.equals(body, car.body);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, brand, engine);
+        return Objects.hash(id, brand, engine, body);
     }
 }

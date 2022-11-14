@@ -22,9 +22,16 @@ public class Post {
     @OneToOne
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
-    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "price_histories_id", nullable = false)
     private List<PriceHistory> priceHistory = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "participates",
+            joinColumns = {@JoinColumn(name = "post_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private List<User> userList;
 
     public int getId() {
         return id;

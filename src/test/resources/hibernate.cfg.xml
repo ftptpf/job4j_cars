@@ -22,6 +22,7 @@
         <mapping class="ru.job4j.model.Body" />
         <mapping class="ru.job4j.model.User" />
         <mapping class="ru.job4j.model.Post" />
+        <mapping class="ru.job4j.model.PriceHistory" />
 
     </session-factory>
 </hibernate-configuration>
