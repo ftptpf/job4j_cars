@@ -96,12 +96,12 @@ public class Car {
         this.body = body;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<Driver> getUsers() {
+        return drivers;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setUsers(Set<Driver> drivers) {
+        this.drivers = drivers;
     }
 
 
