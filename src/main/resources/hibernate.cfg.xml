@@ -17,13 +17,15 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.jdbc.time_zone">UTC+3</property>
 
-        <mapping class="ru.job4j.model.Car" />
-        <mapping class="ru.job4j.model.Engine" />
-        <mapping class="ru.job4j.model.Brand" />
         <mapping class="ru.job4j.model.Body" />
-        <mapping class="ru.job4j.model.User" />
+        <mapping class="ru.job4j.model.Brand" />
+        <mapping class="ru.job4j.model.Car" />
+        <mapping class="ru.job4j.model.Driver" />
+        <mapping class="ru.job4j.model.Engine" />
+        <mapping class="ru.job4j.model.Participates" />
         <mapping class="ru.job4j.model.Post" />
         <mapping class="ru.job4j.model.PriceHistory" />
+        <mapping class="ru.job4j.model.User" />
 
     </session-factory>
 </hibernate-configuration>
