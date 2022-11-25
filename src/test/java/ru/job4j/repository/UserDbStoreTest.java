@@ -15,8 +15,12 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.*;
 
 class UserDbStoreTest {
-    private static final StandardServiceRegistry REGISTRY = new StandardServiceRegistryBuilder().configure().build();
-    private static final SessionFactory SESSION_FACTORY = new MetadataSources(REGISTRY).buildMetadata().buildSessionFactory();
+    private static final StandardServiceRegistry REGISTRY = new StandardServiceRegistryBuilder()
+            .configure()
+            .build();
+    private static final SessionFactory SESSION_FACTORY = new MetadataSources(REGISTRY)
+            .buildMetadata()
+            .buildSessionFactory();
 
     @BeforeAll
     public static void cleanBase() {
@@ -49,13 +53,13 @@ class UserDbStoreTest {
     }
 
     @Test
-    public void whenAddNewUserWithSameEmail() {
+    public void whenAddNewUserWithSameLogin() {
         UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
         user1.setLogin("Oleg");
         user1.setPassword("oleg");
         User user2 = new User();
-        user2.setLogin("Stepan");
+        user2.setLogin("Oleg");
         user2.setPassword("stepan");
 
         Optional<User> optionalUser1 = store.create(user1);
@@ -105,7 +109,7 @@ class UserDbStoreTest {
     }
 
     @Test
-    public void whenFindUserByEmailAndPassword() {
+    public void whenFindUserByLoginAndPassword() {
         UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
         user1.setLogin("Oleg");
@@ -124,7 +128,7 @@ class UserDbStoreTest {
     }
 
     @Test
-    public void whenNotFindUserByEmailAndPassword() {
+    public void whenNotFindUserByLoginAndPassword() {
         UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
         user1.setLogin("Oleg");

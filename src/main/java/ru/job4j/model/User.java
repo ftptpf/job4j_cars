@@ -1,6 +1,8 @@
 package ru.job4j.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +15,8 @@ public class User {
     private String login;
     @Column(nullable = false)
     private String password;
+    @ManyToMany(mappedBy = "users")
+    List<Post> posts = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -36,6 +40,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override

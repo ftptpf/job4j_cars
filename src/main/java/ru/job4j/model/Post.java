@@ -31,7 +31,7 @@ public class Post {
             joinColumns = {@JoinColumn(name = "post_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")}
     )
-    private List<User> userList;
+    private List<User> users;
 
     public int getId() {
         return id;
@@ -97,6 +97,11 @@ public class Post {
     public void removePriceHistory(PriceHistory history) {
         priceHistory.remove(history);
         history.setPost(null);
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+        user.getPosts().add(this);
     }
 
     @Override
