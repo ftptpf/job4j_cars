@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS price_histories (
     id SERIAL PRIMARY KEY ,
     before BIGINT NOT NULL ,
     after BIGINT NOT NULL ,
-    created TIMESTAMP WITH TIME ZONE DEFAULT now()
+    created TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
 );
 
 COMMENT ON TABLE price_histories IS 'История изменения цены автомобиля';

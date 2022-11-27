@@ -6,4 +6,5 @@ CREATE TABLE IF NOT EXISTS drivers (
 
 COMMENT ON TABLE drivers IS 'Автовладельцы';
 COMMENT ON COLUMN drivers.id IS 'Идентификатор автовладельца';
+COMMENT ON COLUMN drivers.name IS 'Имя автовладельца';
 COMMENT ON COLUMN drivers.user_id IS 'Пользователь';
