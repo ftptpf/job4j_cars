@@ -24,7 +24,7 @@ public class Car {
     private Engine engine;
     @ManyToOne
     @JoinColumn(name = "body_id", foreignKey = @ForeignKey(name = "BODY_ID_FK"), nullable = false)
-    private Engine body;
+    private Body body;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "history_owner", joinColumns = {
             @JoinColumn(name = "driver_id", nullable = false, updatable = false)},
@@ -88,11 +88,11 @@ public class Car {
         this.engine = engine;
     }
 
-    public Engine getBody() {
+    public Body getBody() {
         return body;
     }
 
-    public void setBody(Engine body) {
+    public void setBody(Body body) {
         this.body = body;
     }
 

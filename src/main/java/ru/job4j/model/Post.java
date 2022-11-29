@@ -22,8 +22,8 @@ public class Post {
     @OneToOne
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "price_histories_id", nullable = false)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "price_histories_id")
     private List<PriceHistory> priceHistory = new ArrayList<>();
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
