@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS drivers (
     id SERIAL PRIMARY KEY ,
-    name TEXT UNIQUE NOT NULL ,
+    name TEXT NOT NULL ,
     user_id INT UNIQUE REFERENCES users(id)
 );
 
