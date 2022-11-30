@@ -23,15 +23,14 @@ public class Post {
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "price_histories_id")
+    @JoinColumn(name = "price_history_id")
     private List<PriceHistory> priceHistory = new ArrayList<>();
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "participates",
-            joinColumns = {@JoinColumn(name = "post_id")},
-            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinTable(name = "participates",
+            joinColumns = {@JoinColumn(name = "post_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)}
     )
-    private List<User> users;
+    private List<User> participates = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -91,17 +90,20 @@ public class Post {
 
     public void addPriceHistory(PriceHistory history) {
         priceHistory.add(history);
-        history.setPost(this);
     }
 
     public void removePriceHistory(PriceHistory history) {
         priceHistory.remove(history);
-        history.setPost(null);
     }
 
-    public void addUser(User user) {
-        users.add(user);
+    public void addParticipate(User user) {
+        participates.add(user);
         user.getPosts().add(this);
+    }
+
+    public void removeParticipate(User user) {
+        participates.remove(user);
+        user.getPosts().remove(this);
     }
 
     @Override

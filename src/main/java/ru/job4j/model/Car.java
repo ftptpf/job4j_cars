@@ -1,9 +1,7 @@
 package ru.job4j.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "cars")
@@ -25,12 +23,11 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "body_id", foreignKey = @ForeignKey(name = "BODY_ID_FK"), nullable = false)
     private Body body;
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "history_owner", joinColumns = {
-            @JoinColumn(name = "driver_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {
-            @JoinColumn(name = "car_id", nullable = false, updatable = false)})
-    Set<Driver> drivers = new HashSet<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinTable(name = "history_owner",
+            joinColumns = {@JoinColumn(name = "driver_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "car_id", nullable = false)})
+    List<Driver> drivers = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -96,11 +93,11 @@ public class Car {
         this.body = body;
     }
 
-    public Set<Driver> getUsers() {
+    public List<Driver> getDrivers() {
         return drivers;
     }
 
-    public void setUsers(Set<Driver> drivers) {
+    public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
     }
 

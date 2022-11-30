@@ -21,7 +21,6 @@
         <mapping class="ru.job4j.model.Car" />
         <mapping class="ru.job4j.model.Driver" />
         <mapping class="ru.job4j.model.Engine" />
-        <mapping class="ru.job4j.model.Participates" />
         <mapping class="ru.job4j.model.Post" />
         <mapping class="ru.job4j.model.PriceHistory" />
         <mapping class="ru.job4j.model.User" />
