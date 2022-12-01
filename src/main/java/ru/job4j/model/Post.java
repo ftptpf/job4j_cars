@@ -22,10 +22,10 @@ public class Post {
     @OneToOne
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "price_history_id")
     private List<PriceHistory> priceHistory = new ArrayList<>();
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "participates",
             joinColumns = {@JoinColumn(name = "post_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false)}

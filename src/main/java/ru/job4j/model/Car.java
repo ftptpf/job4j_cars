@@ -23,7 +23,7 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "body_id", foreignKey = @ForeignKey(name = "BODY_ID_FK"), nullable = false)
     private Body body;
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "history_owner",
             joinColumns = {@JoinColumn(name = "driver_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "car_id", nullable = false)})
