@@ -28,6 +28,7 @@ COMMENT ON COLUMN bodies.name IS 'Наименование кузова авто
 
 CREATE TABLE IF NOT EXISTS cars (
     id SERIAL PRIMARY KEY ,
+    description TEXT ,
     car_year INTEGER ,
     kilometer INTEGER ,
     photo BYTEA ,

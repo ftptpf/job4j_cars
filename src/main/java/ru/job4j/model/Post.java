@@ -23,7 +23,6 @@ public class Post {
     @JoinColumn(name = "car_id", nullable = false)
     private Car car;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "price_history_id")
     private List<PriceHistory> priceHistory = new ArrayList<>();
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "participates",
@@ -88,12 +87,14 @@ public class Post {
         this.car = car;
     }
 
-    public void addPriceHistory(PriceHistory history) {
-        priceHistory.add(history);
+    public void addPriceHistory(PriceHistory priceHistory) {
+        this.priceHistory.add(priceHistory);
+        priceHistory.setPost(this);
     }
 
-    public void removePriceHistory(PriceHistory history) {
-        priceHistory.remove(history);
+    public void removePriceHistory(PriceHistory priceHistory) {
+        this.priceHistory.remove(priceHistory);
+        priceHistory.setPost(null);
     }
 
     public void addParticipate(User user) {

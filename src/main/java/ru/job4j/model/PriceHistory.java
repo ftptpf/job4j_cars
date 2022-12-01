@@ -15,6 +15,9 @@ public class PriceHistory {
     @Column(nullable = false)
     private long after;
     private LocalDateTime created = LocalDateTime.now();
+    @ManyToOne
+    @JoinColumn(name = "post_id", foreignKey = @ForeignKey(name = "POST_ID_FK"), nullable = false)
+    private Post post;
 
     public int getId() {
         return id;
@@ -28,7 +31,7 @@ public class PriceHistory {
         return before;
     }
 
-    public void setBefore(int before) {
+    public void setBefore(long before) {
         this.before = before;
     }
 
@@ -36,7 +39,7 @@ public class PriceHistory {
         return after;
     }
 
-    public void setAfter(int after) {
+    public void setAfter(long after) {
         this.after = after;
     }
 
@@ -46,6 +49,14 @@ public class PriceHistory {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     @Override

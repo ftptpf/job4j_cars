@@ -24,7 +24,7 @@ public class Car {
     @JoinColumn(name = "body_id", foreignKey = @ForeignKey(name = "BODY_ID_FK"), nullable = false)
     private Body body;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "history_owner",
+    @JoinTable(name = "history_owners",
             joinColumns = {@JoinColumn(name = "driver_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "car_id", nullable = false)})
     List<Driver> drivers = new ArrayList<>();
