@@ -9,7 +9,6 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String description;
     @Column(name = "car_year")
     private int year;
     private int kilometer;
@@ -35,14 +34,6 @@ public class Car {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getYear() {

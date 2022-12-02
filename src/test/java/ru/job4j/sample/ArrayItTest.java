@@ -1,4 +1,4 @@
-package ru.job4j.sumple;
+package ru.job4j.sample;
 
 import org.junit.jupiter.api.Test;
 

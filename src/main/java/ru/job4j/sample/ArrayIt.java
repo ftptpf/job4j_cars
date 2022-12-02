@@ -1,4 +1,4 @@
-package ru.job4j.sumple;
+package ru.job4j.sample;
 
 import java.util.Iterator;
 
