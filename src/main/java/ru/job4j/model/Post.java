@@ -87,6 +87,22 @@ public class Post {
         this.car = car;
     }
 
+    public List<PriceHistory> getPriceHistory() {
+        return priceHistory;
+    }
+
+    public void setPriceHistory(List<PriceHistory> priceHistory) {
+        this.priceHistory = priceHistory;
+    }
+
+    public List<User> getParticipates() {
+        return participates;
+    }
+
+    public void setParticipates(List<User> participates) {
+        this.participates = participates;
+    }
+
     public void addPriceHistory(PriceHistory priceHistory) {
         this.priceHistory.add(priceHistory);
         priceHistory.setPost(this);
