@@ -46,6 +46,12 @@ public class PostDbStore {
                 Post.class);
     }
 
+    public List<Post> findAllSold() {
+        return crudRepository.query(
+                "SELECT p FROM Post p JOIN FETCH p.car JOIN FETCH p.user WHERE p.sale = false ORDER BY p.id",
+                Post.class);
+    }
+
     public List<Post> findAllNew() {
         return crudRepository.query(
                 "SELECT p FROM Post p JOIN FETCH p.car JOIN FETCH p.user WHERE p.created >= CURRENT_DATE ORDER BY p.id",

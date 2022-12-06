@@ -20,6 +20,7 @@ public class AuthFilter implements Filter {
         if (uri.endsWith("index")
                 || uri.endsWith("login")
                 || uri.endsWith("actual")
+                || uri.endsWith("sold")
                 || uri.endsWith("registration")) {
             filterChain.doFilter(req, res);
             return;

@@ -41,10 +41,17 @@
                             <th scope="col">Статус</th>
                         </tr>
                         </thead>
-<!--                        <tbody>
+                        <tbody>
                         <tr th:each="post: ${posts}">
-                            <td th:text="${post.id}" />
-                            <td >
+                            <td th:text="${post.car.photo}" />
+                            <td th:text="${post.car.brand.name}" />
+                            <td th:text="${post.car.year}" />
+                            <td th:text="${post.car.kilometer}" />
+                            <td th:text="${post.price}" />
+                            <td th:text="${post.created}" />
+                            <td th:text="${post.user.login}" />
+                            <td th:text="((${post.sale}) ? 'Актуально' : 'Продано')" />
+<!--                            <td >
                                 <a th:href="@{|/detail/${post.id}|} ">
                                     <span th:text="${post.car.description}" />
                                 </a>
@@ -56,9 +63,9 @@
                             </td>
                             <td th:text="${item.created}" />
                             <td th:text="${item.user.name}" />
-                            <td th:text="((${item.done}) ? 'Выполнено' : 'Не выполнено')" />
+                            <td th:text="((${item.done}) ? 'Выполнено' : 'Не выполнено')" />-->
                         </tr>
-                        </tbody>-->
+                        </tbody>
                     </table>
                 </div>
                 <a th:href="@{/add}">
