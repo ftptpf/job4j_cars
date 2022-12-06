@@ -24,6 +24,13 @@ public class PostController {
         return "index";
     }
 
+    @GetMapping("/actual")
+    public String actual(Model model, HttpSession session) {
+        GuestUtil.checkAndSetGuestName(model, session);
+        model.addAttribute("posts", service.findAllSale());
+        return "index";
+    }
+
     @GetMapping("/add")
     public String add(Model model, HttpSession session) {
         GuestUtil.checkAndSetGuestName(model, session);

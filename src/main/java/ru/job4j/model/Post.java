@@ -15,7 +15,7 @@ public class Post {
     private String text;
     private LocalDateTime created;
     private long price;
-    private boolean sold;
+    private boolean sale;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -63,12 +63,12 @@ public class Post {
         this.price = price;
     }
 
-    public boolean isSold() {
-        return sold;
+    public boolean isSale() {
+        return sale;
     }
 
-    public void setSold(boolean sold) {
-        this.sold = sold;
+    public void setSale(boolean sold) {
+        this.sale = sold;
     }
 
     public User getUser() {

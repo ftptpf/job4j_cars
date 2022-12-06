@@ -31,8 +31,8 @@ public class PostService {
         return store.findById(id);
     }
 
-    public List<Post> findAllSold() {
-        return store.findAllSold();
+    public List<Post> findAllSale() {
+        return store.findAllSale();
     }
 
     public List<Post> findAllNew() {

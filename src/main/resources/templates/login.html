@@ -30,12 +30,12 @@
             </div>
             <div class="card-body">
                 <div th:if="${fail}" class="alert alert-danger" role="alert">
-                    Email или пароль введены неверно!
+                    Логин или пароль введены неверно!
                 </div>
                 <form th:action="@{/login}" method="post">
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="email">
+                        <label>Логин</label>
+                        <input type="text" class="form-control" name="login">
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>

@@ -40,9 +40,9 @@ public class PostDbStore {
                 .uniqueResult());
     }
 
-    public List<Post> findAllSold() {
+    public List<Post> findAllSale() {
         return crudRepository.query(
-                "SELECT p FROM Post p JOIN FETCH p.car JOIN FETCH p.user WHERE p.sold = true ORDER BY p.id",
+                "SELECT p FROM Post p JOIN FETCH p.car JOIN FETCH p.user WHERE p.sale = true ORDER BY p.id",
                 Post.class);
     }
 

@@ -32,7 +32,7 @@ public class UserDbStore {
     }
 
     public List<User> findAll() {
-        return crudRepository.query("FROM User u JOIN FETCH u.posts", User.class);
+        return crudRepository.query("FROM User", User.class);
     }
 
     public Optional<User> findByLoginAndPassword(String login, String password) {

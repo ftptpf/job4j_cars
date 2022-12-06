@@ -17,13 +17,13 @@
                     <a class="nav-item nav-link" th:href="@{/sold}">Проданы</a>
                     <a class="nav-item nav-link" th:href="@{/newposts}">Новые объявления</a>
                     <a class="nav-item nav-link" th:href="@{/add}">Добавить объявление</a>
-                    <a class="nav-item nav-link" th:if="${user.name == 'Гость'}" th:href="@{/registration}">Регистрация</a>
-                    <a class="nav-item nav-link" th:if="${user.name == 'Гость'}" th:href="@{/login}">
-                        <span th:text="${user.name}"></span>
+                    <a class="nav-item nav-link" th:if="${user.login == 'Гость'}" th:href="@{/registration}">Регистрация</a>
+                    <a class="nav-item nav-link" th:if="${user.login == 'Гость'}" th:href="@{/login}">
+                        <span th:text="${user.login}"></span>
                         <span> | Войти</span>
                     </a>
-                    <a class="nav-item nav-link" th:if="${user.name != 'Гость'}" th:href="@{/logout}">
-                        <span th:text="${user.name}"></span>
+                    <a class="nav-item nav-link" th:if="${user.login != 'Гость'}" th:href="@{/logout}">
+                        <span th:text="${user.login}"></span>
                         <span> | Выйти</span>
                     </a>
                 </div>
