@@ -41,9 +41,9 @@
                         <input type="text" class="form-control" name="price" id="price" required>
                     </div>
                     <div class="form-group">
-                        <label for="city.id">Город</label>
+                        <label for="city.id">Марка</label>
                         <select class="form-control" id="city.id" name="city.id">
-                            <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"></option>
+                            <option th:each="city : ${posts}" th:value="${city.id}" th:text="${city.name}"></option>
                         </select>
                     </div>
                     <div class="form-group">
