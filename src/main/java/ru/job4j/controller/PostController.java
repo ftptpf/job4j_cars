@@ -3,6 +3,7 @@ package ru.job4j.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import ru.job4j.service.PostService;
 import ru.job4j.util.GuestUtil;
 
@@ -49,5 +50,12 @@ public class PostController {
     public String add(Model model, HttpSession session) {
         GuestUtil.checkAndSetGuestName(model, session);
         return "add";
+    }
+
+    @GetMapping("/detail/{postId}")
+    public String detail(Model model, @PathVariable("postId") int id, HttpSession session) {
+        GuestUtil.checkAndSetGuestName(model, session);
+        model.addAttribute("post", service.findById(id));
+        return "detail";
     }
 }

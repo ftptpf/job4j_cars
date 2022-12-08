@@ -28,7 +28,7 @@
             <div class="card-body">
                 <div>
                     <label>Авто</label>
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th scope="col">Фото</th>
@@ -39,6 +39,7 @@
                             <th scope="col">Дата объявления</th>
                             <th scope="col">Автор</th>
                             <th scope="col">Статус</th>
+                            <th scope="col">Подробней</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -51,6 +52,12 @@
                             <td th:text="${post.created}" />
                             <td th:text="${post.user.login}" />
                             <td th:text="((${post.sale}) ? 'Актуально' : 'Продано')" />
+                            <td >
+                                <a th:href="@{|/detail/${post.id}|}">
+                                    <span class="badge rounded-pill bg-light text-dark">>>></span>
+                                </a>
+                            </td>
+
 <!--                            <td >
                                 <a th:href="@{|/detail/${post.id}|} ">
                                     <span th:text="${post.car.description}" />
@@ -61,9 +68,7 @@
                                     <span th:text="${category.name}" />
                                 </div>
                             </td>
-                            <td th:text="${item.created}" />
-                            <td th:text="${item.user.name}" />
-                            <td th:text="((${item.done}) ? 'Выполнено' : 'Не выполнено')" />-->
+-->
                         </tr>
                         </tbody>
                     </table>
