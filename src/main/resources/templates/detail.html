@@ -31,8 +31,28 @@
                     <p>
                         <span th:text="${post.text}" />
                     </p>
-
                 </div>
+                <div>
+                    <label>Характеристики автомобиля</label>
+                    <table class="table", >
+                        <tbody >
+                        <tr>
+                            <td th:text="${post.car.year}"/>
+                        </tr>
+<!--                        <tr th:each="post: ${posts}">
+                            <td th:text="${post.car.photo}" />
+                            <td th:text="${post.car.brand.name}" />
+                            <td th:text="${post.car.year}" />
+                            <td th:text="${post.car.kilometer}" />
+                            <td th:text="${post.price}" />
+                            <td th:text="${post.created}" />
+                            <td th:text="${post.user.login}" />
+                            <td th:text="((${post.sale}) ? 'Актуально' : 'Продано')" />
+
+                        </tr>-->
+                        </tbody>
+                    </table>
+                </div>-->
                 <!--<div>
                     <label>Авто</label>
                     <table class="table">
