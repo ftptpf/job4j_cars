@@ -37,7 +37,10 @@ public class UserDbStore {
 
     public Optional<User> findByLoginAndPassword(String login, String password) {
         return crudRepository.optional(
-                "FROM User WHERE login = :userLogin AND password = :userPassword",
+                        """
+                        FROM User
+                        WHERE login = :userLogin AND password = :userPassword
+                        """,
                 User.class,
                 Map.of("userLogin", login, "userPassword", password)
         );

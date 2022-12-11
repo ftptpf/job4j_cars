@@ -58,4 +58,10 @@ public class PostController {
         model.addAttribute("post", service.findById(id));
         return "detail";
     }
+
+    @GetMapping("/sold/{postId}")
+    public String sold(Model model, @PathVariable("postId") int id, HttpSession session) {
+        service.changeStatusToSold(id);
+        return "redirect:/detail/" + id;
+    }
 }

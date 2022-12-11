@@ -33,35 +33,9 @@
                     </p>
                 </div>
                 <div>
-                    <label>Характеристики автомобиля</label>
-                    <table class="table", >
-                        <tbody >
-                        <tr>
-                            <td th:text="${post.car.year}"/>
-                        </tr>
-<!--                        <tr th:each="post: ${posts}">
-                            <td th:text="${post.car.photo}" />
-                            <td th:text="${post.car.brand.name}" />
-                            <td th:text="${post.car.year}" />
-                            <td th:text="${post.car.kilometer}" />
-                            <td th:text="${post.price}" />
-                            <td th:text="${post.created}" />
-                            <td th:text="${post.user.login}" />
-                            <td th:text="((${post.sale}) ? 'Актуально' : 'Продано')" />
-
-                        </tr>-->
-                        </tbody>
-                    </table>
-                </div>-->
-                <!--<div>
-                    <label>Авто</label>
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">Фото</th>
-                            <th scope="col">Марка</th>
-                            <th scope="col">Год выпуска</th>
-                            <th scope="col">Пробег, км</th>
                             <th scope="col">Цена, руб</th>
                             <th scope="col">Дата объявления</th>
                             <th scope="col">Автор</th>
@@ -69,22 +43,54 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="post: ${posts}">
-                            <td th:text="${post.car.photo}" />
-                            <td th:text="${post.car.brand.name}" />
-                            <td th:text="${post.car.year}" />
-                            <td th:text="${post.car.kilometer}" />
+                        <tr>
                             <td th:text="${post.price}" />
                             <td th:text="${post.created}" />
                             <td th:text="${post.user.login}" />
                             <td th:text="((${post.sale}) ? 'Актуально' : 'Продано')" />
-
+                            <td  />
                         </tr>
                         </tbody>
                     </table>
-                </div>-->
-                <a th:href="@{/add}">
-                    <button type="button" class="btn btn-primary">Добавить объявление</button>
+                </div>
+                <div>
+                    <label>Характеристики автомобиля</label>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td>
+                            <span>Марка автомобиля: </span>
+                            <span th:text="${post.car.brand.name}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Год выпуска: </span>
+                                <span th:text="${post.car.year}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Пробег, км: </span>
+                                <span th:text="${post.car.kilometer}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Кузов: </span>
+                                <span th:text="${post.car.body.name}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>Двигатель: </span>
+                                <span th:text="${post.car.engine.name}"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <a th:if="${post.user.login} == ${user.login} and ${post.sale}" th:href="@{|/sold/${post.id}|}" >
+                    <button type="button" class="btn btn-primary">Снять объявление с продажи</button>
                 </a>
             </div>
         </div>

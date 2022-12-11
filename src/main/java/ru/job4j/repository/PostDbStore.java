@@ -29,46 +29,92 @@ public class PostDbStore {
 
     public List<Post> findAll() {
         return  crudRepository.query(
-                "SELECT p FROM Post p JOIN FETCH p.car JOIN FETCH p.user ORDER BY p.id",
+                        """
+                        SELECT p FROM Post p
+                        JOIN FETCH p.car
+                        JOIN FETCH p.user
+                        ORDER BY p.id
+                        """,
                 Post.class);
     }
 
     public Post findById(int id) {
-        return (Post) crudRepository.tx(session -> session.createQuery(
-                        "SELECT p FROM Post p JOIN FETCH p.car JOIN FETCH p.user WHERE p.id = :fId")
+        return (Post) crudRepository.tx(
+                session -> session.createQuery(
+                                """
+                                SELECT p FROM Post p
+                                JOIN FETCH p.car
+                                JOIN FETCH p.user
+                                WHERE p.id = :fId
+                                """
+                )
                 .setParameter("fId", id)
                 .uniqueResult());
     }
 
     public List<Post> findAllSale() {
         return crudRepository.query(
-                "SELECT p FROM Post p JOIN FETCH p.car JOIN FETCH p.user WHERE p.sale = true ORDER BY p.id",
+                        """
+                        SELECT p FROM Post p
+                        JOIN FETCH p.car
+                        JOIN FETCH p.user
+                        WHERE p.sale = true
+                        ORDER BY p.id
+                        """,
                 Post.class);
     }
 
     public List<Post> findAllSold() {
         return crudRepository.query(
-                "SELECT p FROM Post p JOIN FETCH p.car JOIN FETCH p.user WHERE p.sale = false ORDER BY p.id",
+                        """
+                        SELECT p FROM Post p
+                        JOIN FETCH p.user
+                        WHERE p.sale = false ORDER BY p.id
+                        """,
                 Post.class);
     }
 
     public List<Post> findAllNew() {
         return crudRepository.query(
-                "SELECT p FROM Post p JOIN FETCH p.car JOIN FETCH p.user WHERE p.created >= CURRENT_DATE ORDER BY p.id",
+                """
+                        SELECT p FROM Post p
+                        JOIN FETCH p.car
+                        JOIN FETCH p.user
+                        WHERE p.created >= CURRENT_DATE ORDER BY p.id
+                        """,
                 Post.class);
     }
 
     public List<Post> findAllSpecificBrand(String brand) {
         return crudRepository.query(
-                "SELECT p FROM Post p JOIN FETCH p.car c JOIN FETCH p.user u WHERE c.brand := carBrand",
+                        """
+                        SELECT p FROM Post p
+                        JOIN FETCH p.car c
+                        JOIN FETCH p.user u
+                        WHERE c.brand := carBrand
+                        """,
                 Post.class,
                 Map.of("carBrand", brand));
     }
 
     public List<Post> findAllPostsWithPhoto() {
         return crudRepository.query(
-                "SELECT p FROM Post p JOIN FETCH p.car c JOIN FETCH p.user u WHERE c.photo IS NOT NULL",
+                        """
+                        SELECT p FROM Post p
+                        JOIN FETCH p.car c
+                        JOIN FETCH p.user u
+                        WHERE c.photo IS NOT NULL
+                        """,
                 Post.class);
     }
 
+    public void changeStatusToSold(int id) {
+        crudRepository.run(
+                        """
+                        UPDATE Post
+                        SET sale = false
+                        WHERE id = :fId
+                        """,
+                Map.of("fId", id));
+    }
 }

@@ -51,5 +51,9 @@ public class PostService {
         return store.findAllPostsWithPhoto();
     }
 
+    public void changeStatusToSold(int id) {
+        store.changeStatusToSold(id);
+    }
+
 
 }
