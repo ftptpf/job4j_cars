@@ -29,29 +29,49 @@
                 Добавить объявление о продаже автомобиля
             </div>
             <div class="card-body">
-                <form th:action="@{/add}" method="post">
-                    <input type="hidden" name="id" value=0>
-                    <input type="hidden" name="status" value=true>
+                <form th:action="@{/add}" method="post" enctype="multipart/form-data">
+<!--                    <input type="hidden" name="id" value=0>
+                    <input type="hidden" name="user" th:value="${user.id}>-->
                     <div class="form-group">
-                        <label for="description">Описание</label>
-                        <input type="text" class="form-control" placeholder="Подробное описание авто" name="description" id="description" required>
+                        <label for="text">Описание</label>
+                        <input type="text" class="form-control" placeholder="Подробное описание авто" name="text" id="text" required>
                     </div>
                     <div class="form-group">
-                        <label for="description">Цена, руб</label>
+                        <label for="photo">Фотография</label>
+                        <input type="file" class="form-control" name="photo" id="photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Цена, руб</label>
                         <input type="text" class="form-control" name="price" id="price" required>
                     </div>
                     <div class="form-group">
-                        <label for="city.id">Марка</label>
-                        <select class="form-control" id="city.id" name="city.id">
-                            <option th:each="city : ${posts}" th:value="${city.id}" th:text="${city.name}"></option>
+                        <label for="year">Год выпуска</label>
+                        <input type="text" class="form-control" name="year" id="year" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kilometer">Пробег, км</label>
+                        <input type="text" class="form-control" name="kilometer" id="kilometer" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="car.brand.id">Марка</label>
+                        <select class="form-control" id="car.brand.id" name="car.brand.id">
+                            <option th:each="car.brand : ${brands}" th:value="${car.brand.id}" th:text="${car.brand.name}"></option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="categories">Выбор одной либо нескольких категорий</label>
-                        <select class="form-control" id="categories" multiple name="category.id" required>
-                            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" ></option>
+                        <label for="car.body.id">Кузов</label>
+                        <select class="form-control" id="car.body.id" name="car.body.id">
+                            <option th:each="'car.body' : ${bodies}" th:value="${car.body.id}" th:text="${car.body.name}"></option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="engine.id">Двигатель</label>
+                        <select class="form-control" id="engine.id" name="engine.id">
+                            <option th:each="engine : ${engines}" th:value="${engine.id}" th:text="${engine.name}"></option>
+                        </select>
+                    </div>
+                    <input type="hidden" name="sale" value=true>
+
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>
             </div>
