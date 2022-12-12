@@ -53,15 +53,15 @@
                         <input type="text" class="form-control" name="kilometer" id="kilometer" required>
                     </div>
                     <div class="form-group">
-                        <label for="car.brand.id">Марка</label>
-                        <select class="form-control" id="car.brand.id" name="car.brand.id">
-                            <option th:each="car.brand : ${brands}" th:value="${car.brand.id}" th:text="${car.brand.name}"></option>
+                        <label for="brand.id">Марка</label>
+                        <select class="form-control" id="brand.id" name="brand.id">
+                            <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}"></option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="car.body.id">Кузов</label>
-                        <select class="form-control" id="car.body.id" name="car.body.id">
-                            <option th:each="'car.body' : ${bodies}" th:value="${car.body.id}" th:text="${car.body.name}"></option>
+                        <label for="body.id">Кузов</label>
+                        <select class="form-control" id="body.id" name="car.body.id">
+                            <option th:each="body : ${bodies}" th:value="${body.id}" th:text="${body.name}"></option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -70,7 +70,7 @@
                             <option th:each="engine : ${engines}" th:value="${engine.id}" th:text="${engine.name}"></option>
                         </select>
                     </div>
-                    <input type="hidden" name="sale" value=true>
+                    <!--<input type="hidden" name="sale" value=true>-->
 
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>

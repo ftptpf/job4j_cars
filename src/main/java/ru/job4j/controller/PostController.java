@@ -58,7 +58,7 @@ public class PostController {
     }
 
     @PostMapping("/add")
-    public String addPost(Model model, HttpSession session, @ModelAttribute Post post) {
+    public String addPost(Model model, HttpSession session, @ModelAttribute Post post, @ModelAttribute Car car) {
         GuestUtil.checkAndSetGuestName(model, session);
         User user = (User) model.getAttribute("user");
         post.setUser(user);

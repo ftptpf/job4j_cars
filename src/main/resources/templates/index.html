@@ -44,7 +44,10 @@
                         </thead>
                         <tbody>
                         <tr th:each="post: ${posts}">
-                            <td th:text="${post.car.photo}" />
+                            <td>
+                                <img th:width="150" th:high="150" src="@{|${post.car.photo}|}">
+                            </td>
+                            <!--<td th:  ="${post.car.photo}" />-->
                             <td th:text="${post.car.brand.name}" />
                             <td th:text="${post.car.year}" />
                             <td th:text="${post.car.kilometer}" />
