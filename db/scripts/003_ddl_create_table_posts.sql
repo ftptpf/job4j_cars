@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS posts (
     id SERIAL PRIMARY KEY ,
     text TEXT ,
+    photo BYTEA ,
     created TIMESTAMP DEFAULT now(),
     price BIGINT ,
     sale BOOLEAN ,
@@ -10,6 +11,7 @@ CREATE TABLE IF NOT EXISTS posts (
 
 COMMENT ON TABLE posts IS 'Объявления';
 COMMENT ON COLUMN posts.id IS 'Идентификатор объявления';
+COMMENT ON COLUMN posts.photo IS 'Фотография автомобиля';
 COMMENT ON COLUMN posts.text IS 'Текст описания объявления';
 COMMENT ON COLUMN posts.created IS 'Дата создания объявления';
 COMMENT ON COLUMN posts.price IS 'Цена в объявлении';

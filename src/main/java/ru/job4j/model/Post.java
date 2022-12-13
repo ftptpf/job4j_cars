@@ -13,6 +13,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String text;
+    private byte[] photo;
     private LocalDateTime created;
     private long price;
     private boolean sale;
@@ -45,6 +46,14 @@ public class Post {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     public LocalDateTime getCreated() {

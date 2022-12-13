@@ -12,7 +12,6 @@ public class Car {
     @Column(name = "car_year")
     private int year;
     private int kilometer;
-    private byte[] photo;
     @ManyToOne
     @JoinColumn(name = "brand_id", foreignKey = @ForeignKey(name = "BRAND_ID_FK"), nullable = false)
     private Brand brand;
@@ -50,14 +49,6 @@ public class Car {
 
     public void setKilometer(int kilometer) {
         this.kilometer = kilometer;
-    }
-
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
     }
 
     public Brand getBrand() {

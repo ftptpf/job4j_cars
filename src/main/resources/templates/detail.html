@@ -27,7 +27,7 @@
         <div class="card" style="width: 100%">
             <div class="card-body">
                 <div class="clearfix">
-                    <img src="${post.car.photo}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Фото автомобиля">
+                    <img th:width="250" th:high="250" th:src="@{|/photoPost/${post.id}|}">
                     <p>
                         <span th:text="${post.text}" />
                     </p>

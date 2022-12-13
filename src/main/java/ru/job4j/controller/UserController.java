@@ -43,14 +43,15 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginPage(Model model, @RequestParam(name = "fail", required = false) Boolean fail, HttpSession session) {
+    public String loginPage(Model model, HttpSession session,
+                            @RequestParam(name = "fail", required = false) Boolean fail) {
         GuestUtil.checkAndSetGuestName(model, session);
         model.addAttribute("fail", fail != null);
         return "login";
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User user, HttpSession session) {
+    public String login(HttpSession session, @ModelAttribute User user) {
         Optional<User> dbUser = service.findByLoginAndPassword(
                 user.getLogin(),
                 user.getPassword());
