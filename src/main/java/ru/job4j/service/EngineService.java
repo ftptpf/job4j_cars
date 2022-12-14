@@ -10,6 +10,10 @@ import java.util.List;
 public class EngineService {
     private EngineDbStore store;
 
+    public EngineService(EngineDbStore store) {
+        this.store = store;
+    }
+
     public List<Engine> findAll() {
         return store.findAll();
     }

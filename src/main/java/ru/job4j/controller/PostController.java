@@ -85,6 +85,7 @@ public class PostController {
         post.setPhoto(file.getBytes());
         User user = (User) model.getAttribute("user");
         post.setUser(userService.findById(user.getId()));
+
         post.setCar(car);
         service.saveOrUpdate(post);
         return "redirect:/index";

@@ -10,6 +10,10 @@ import java.util.List;
 public class BrandService {
     private BrandDbStore store;
 
+    public BrandService(BrandDbStore store) {
+        this.store = store;
+    }
+
     public List<Brand> findAll() {
         return store.findAll();
     }
