@@ -12,9 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.job4j.model.Car;
 import ru.job4j.model.Post;
 import ru.job4j.model.User;
-import ru.job4j.service.BodyService;
-import ru.job4j.service.PostService;
-import ru.job4j.service.UserService;
+import ru.job4j.service.*;
 import ru.job4j.util.GuestUtil;
 
 import javax.servlet.http.HttpSession;
@@ -25,14 +23,20 @@ public class PostController {
 
     private final PostService service;
     private final UserService userService;
-    private final BodyService bodiesService;
+    private final BodyService bodyService;
+    private final BrandService brandService;
+    private final EngineService engineService;
 
     public PostController(PostService service,
                           UserService userService,
-                          BodyService bodiesService) {
+                          BodyService bodyService,
+                          BrandService brandService,
+                          EngineService engineService) {
         this.service = service;
         this.userService = userService;
-        this.bodiesService = bodiesService;
+        this.bodyService = bodyService;
+        this.brandService = brandService;
+        this.engineService = engineService;
     }
 
     @GetMapping("/index")
@@ -66,10 +70,9 @@ public class PostController {
     @GetMapping("/add")
     public String add(Model model, HttpSession session) {
         GuestUtil.checkAndSetGuestName(model, session);
-        model.addAttribute("bodies", bodiesService.findAll());
-        model.addAttribute("brands", brandsService.findAll());
-        model.addAttribute("engines", enginesService.findAll());
-
+        model.addAttribute("bodies", bodyService.findAll());
+        model.addAttribute("brands", brandService.findAll());
+        model.addAttribute("engines", engineService.findAll());
         return "add";
     }
 

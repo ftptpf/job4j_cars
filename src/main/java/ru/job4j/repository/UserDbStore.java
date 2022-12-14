@@ -36,19 +36,15 @@ public class UserDbStore {
     }
 
     public User findById(int id) {
-        return crudRepository.tx(
+        return (User) crudRepository.tx(
                 session -> session.createQuery(
                 """
                           SELECT u FROM User u
-
-"""
-
-                )
-        )
-/*        return crudRepository.tx("""
-                        FROM User
-                        WHERE id = :userId
-                        """);*/
+                          WHERE u.id = :fId
+                          """
+                        )
+                        .setParameter("fId", id)
+                        .uniqueResult());
     }
 
     public Optional<User> findByLoginAndPassword(String login, String password) {
