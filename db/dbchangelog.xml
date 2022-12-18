@@ -17,5 +17,4 @@
 	<include file="scripts/007_ddl_create_table_history_owners.sql" relativeToChangelogFile="true"/>
 	<include file="scripts/008_dml_create_users.sql" relativeToChangelogFile="true"/>
 	<include file="scripts/009_dml_create_cars.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/010_dml_create_posts.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

@@ -30,8 +30,6 @@
             </div>
             <div class="card-body">
                 <form th:action="@{/add}" method="post" enctype="multipart/form-data">
-<!--                    <input type="hidden" name="id" value=0>
-                    <input type="hidden" name="user" th:value="${user.id}>-->
                     <div class="form-group">
                         <label for="text">Описание</label>
                         <input type="text" class="form-control" placeholder="Подробное описание авто" name="text" id="text" required>
@@ -70,8 +68,7 @@
                             <option th:each="engine : ${engines}" th:value="${engine.id}" th:text="${engine.name}"></option>
                         </select>
                     </div>
-                    <!--<input type="hidden" name="sale" value=true>-->
-
+                    <input type="hidden" name="sale" value=true>
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>
             </div>

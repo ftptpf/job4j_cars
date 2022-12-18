@@ -17,6 +17,7 @@ import ru.job4j.util.GuestUtil;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 @Controller
 public class PostController {
@@ -26,17 +27,20 @@ public class PostController {
     private final BodyService bodyService;
     private final BrandService brandService;
     private final EngineService engineService;
+    private final CarService carService;
 
     public PostController(PostService service,
                           UserService userService,
                           BodyService bodyService,
                           BrandService brandService,
-                          EngineService engineService) {
+                          EngineService engineService,
+                          CarService carService) {
         this.service = service;
         this.userService = userService;
         this.bodyService = bodyService;
         this.brandService = brandService;
         this.engineService = engineService;
+        this.carService = carService;
     }
 
     @GetMapping("/index")
@@ -85,7 +89,8 @@ public class PostController {
         post.setPhoto(file.getBytes());
         User user = (User) model.getAttribute("user");
         post.setUser(userService.findById(user.getId()));
-
+        post.setCreated(LocalDateTime.now());
+        carService.saveOrUpdate(car);
         post.setCar(car);
         service.saveOrUpdate(post);
         return "redirect:/index";

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class BrandService {
-    private BrandDbStore store;
+    private final BrandDbStore store;
 
     public BrandService(BrandDbStore store) {
         this.store = store;

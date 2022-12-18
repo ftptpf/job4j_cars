@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class EngineService {
-    private EngineDbStore store;
+    private final EngineDbStore store;
 
     public EngineService(EngineDbStore store) {
         this.store = store;

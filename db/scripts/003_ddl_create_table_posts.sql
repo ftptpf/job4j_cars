@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS posts (
     id SERIAL PRIMARY KEY ,
     text TEXT ,
     photo BYTEA ,
-    created TIMESTAMP DEFAULT now() ,
+    created TIMESTAMP ,
     price BIGINT ,
     sale BOOLEAN ,
     user_id INT NOT NULL REFERENCES users(id) ,

@@ -21,8 +21,10 @@ public class AuthFilter implements Filter {
                 || uri.endsWith("login")
                 || uri.endsWith("actual")
                 || uri.endsWith("sold")
-                || uri.endsWith("newposts")
-                || uri.endsWith("registration")) {
+                || uri.endsWith("newPosts")
+                || uri.endsWith("registration")
+                || uri.startsWith("/photoPost")
+        ) {
             filterChain.doFilter(req, res);
             return;
         }

@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class BodyService {
 
-    private BodyDbStore store;
+    private final BodyDbStore store;
 
     public BodyService(BodyDbStore store) {
         this.store = store;
