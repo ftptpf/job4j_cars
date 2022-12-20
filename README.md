@@ -3,13 +3,43 @@
 
 ## Проект "Площадка по продаже автомобилей"
 
-Сайт по продаже автомобилей.
+На первой странице представлены все объявления в формате таблицы. 
+Есть возможность фильтрации объявлений по заранее определенным параметрам.
+Можно зайти в конкретное объявление и посмотреть детальную информацию о продаваемом автомобиле.
+Для добавления объявлений - на сайте необходимо зарегистрироваться.
+Для просмотра объявлений - регистрация не нужна.
 
-Используемые технологии:
-Spring boot, Thymeleaf, Bootstrap, Hibernate, PostgreSql, H2, Liquibase
-Сборка: Maven
+## Стек технологии
 
-### Скриншоты web интерфейса.
+В проекте используются:
+- Java 17
+- Spring boot 2.7
+- Hibernate 5.6
+- PostgreSQL 14
+- H2 database 2.1
+- Liquibase 4.18
+- Thymeleaf 3
+- Bootstrap 5
+- Maven 3.8
+- Junit 5
+- Assertj 3.23
+
+## Требования к окружению
+
+Для запуска проекта вам необходимо установить:
+- Java 17
+- PostgreSQL 14
+- Maven 3.8
+
+## Запуск проекта
+
+Запустите SQL shell(psql) из пакета PostgreSQL.
+Создайте базу данных проекта "cars_sale_db"
+
+
+После запуска для начала работы с "Площадкой по продаже автомобилей" перейдите по ссылке http://localhost:8080/index
+
+### Взаимодействие с приложением
 
 ![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/1.JPG "Сайт по продаже автомобилей")
 
@@ -45,18 +75,5 @@ Spring boot, Thymeleaf, Bootstrap, Hibernate, PostgreSql, H2, Liquibase
 
 ![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/7.JPG "Фильтр")
 
-### Запуск проекта.
-
-Для запуска проекта вам понадобится установить:
-JAVA 17+
-PostgreSQL 13+
-Intellij IDEA
-Настройки базы данных смотрите в файле db.properties проекта.
-Импортируйте данный проект в Intellij IDEA загрузив его с github.
-Запуск проекта выполните запустив метод main файла Main.java проекта.
-
-![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/8.JPG "Файл Main.java")
-
-![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/9.JPG "Запуск проекта")
-
-После запуска для начала работы с "Площадкой по продаже автомобилей" перейдите по ссылке http://localhost:8080/index
+### Контакты
+Telegram @webdigg
