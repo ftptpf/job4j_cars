@@ -45,17 +45,17 @@
 
 ### Взаимодействие с приложением
 
-![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/1.JPG "Сайт по продаже автомобилей")
+![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/images/screenshots/1.JPG "Сайт по продаже автомобилей")
 
 Для начала работы необходимо зарегистрироваться и авторизоваться.
 
-![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/2.JPG "Регистрация")
+![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/images/screenshots/2.JPG "Регистрация")
 
-![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/3.JPG "Авторизация")
+![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/images/screenshots/3.JPG "Авторизация")
 
 Можно добавить объявление о продаже автомобиля.
 
-![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/4.JPG "Добавление объявления")
+![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/images/screenshots/4.JPG "Добавление объявления")
 
 После того как мы нажмем кнопку "Добавить объявление" мы попадем на форму где сможем:
 - создать подробное описание
@@ -65,11 +65,11 @@
 - указать пробег
 - выбрать из выпадающих списков основные технические параметры автомобиля
 
-![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/5.JPG "Форма объявления")
+![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/images/screenshots/5.JPG "Форма объявления")
 
 Только пользователь, который создал объявление, имеет возможность снять свой автомобиль с продажи изменив статус с "Актуально" на "Продано"
 
-![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/6.JPG "Подробная информация о автомобиле")
+![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/images/screenshots/6.JPG "Подробная информация о автомобиле")
 
 На сайте предусмотрен фильтр который позволяет выбрать авто:
 - все
@@ -77,7 +77,7 @@
 - проданы
 - новые объявления
 
-![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/src/main/resources/images/7.JPG "Фильтр")
+![Alt-текст](https://github.com/ftptpf/job4j_cars/blob/master/images/screenshots/7.JPG "Фильтр")
 
 ### Контакты
 Telegram @webdigg

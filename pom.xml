@@ -14,7 +14,7 @@
 	<groupId>ru.job4j</groupId>
 	<artifactId>job4j_cars</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>job4j_cars</name>
 	<description>Площадка продажи машин.</description>
