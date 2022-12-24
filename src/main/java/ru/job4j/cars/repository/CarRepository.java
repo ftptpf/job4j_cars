@@ -7,11 +7,11 @@ import ru.job4j.cars.util.CrudRepository;
 import java.util.List;
 
 @Repository
-public class CarDbStore {
+public class CarRepository {
 
     private final CrudRepository crudRepository;
 
-    public CarDbStore(CrudRepository crudRepository) {
+    public CarRepository(CrudRepository crudRepository) {
         this.crudRepository = crudRepository;
     }
 

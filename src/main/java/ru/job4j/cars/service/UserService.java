@@ -2,7 +2,7 @@ package ru.job4j.cars.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.cars.model.User;
-import ru.job4j.cars.repository.UserDbStore;
+import ru.job4j.cars.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,9 +10,9 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private final UserDbStore store;
+    private final UserRepository store;
 
-    public UserService(UserDbStore store) {
+    public UserService(UserRepository store) {
         this.store = store;
     }
 

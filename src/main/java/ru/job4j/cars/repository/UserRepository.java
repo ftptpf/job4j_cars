@@ -9,11 +9,11 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class UserDbStore {
+public class UserRepository {
 
     private final CrudRepository crudRepository;
 
-    public UserDbStore(CrudRepository crudRepository) {
+    public UserRepository(CrudRepository crudRepository) {
         this.crudRepository = crudRepository;
     }
 

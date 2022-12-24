@@ -7,10 +7,10 @@ import ru.job4j.cars.util.CrudRepository;
 import java.util.List;
 
 @Repository
-public class EngineDbStore {
+public class EngineRepository {
     private final CrudRepository crudRepository;
 
-    public EngineDbStore(CrudRepository crudRepository) {
+    public EngineRepository(CrudRepository crudRepository) {
         this.crudRepository = crudRepository;
     }
 

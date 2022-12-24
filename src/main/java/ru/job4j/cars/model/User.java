@@ -16,7 +16,7 @@ public class User {
     @Column(nullable = false)
     private String password;
     @ManyToMany(mappedBy = "participates")
-    List<Post> posts = new ArrayList<>();
+    private List<Post> posts = new ArrayList<>();
 
     public int getId() {
         return id;

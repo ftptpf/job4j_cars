@@ -9,12 +9,18 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 	<include file="scripts/001_ddl_create_table_users.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/002_ddl_create_tables_cars.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/003_ddl_create_table_posts.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/004_ddl_create_table_price_histories.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/005_ddl_create_table_drivers.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/006_ddl_create_table_participates.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/007_ddl_create_table_history_owners.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/008_dml_create_users.sql" relativeToChangelogFile="true"/>
-	<include file="scripts/009_dml_create_cars.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/002_ddl_create_table_engines.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/003_ddl_create_table_brands.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/004_ddl_create_table_bodies.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/005_ddl_create_tables_cars.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/006_ddl_create_table_posts.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/007_ddl_create_table_price_histories.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/008_ddl_create_table_drivers.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/009_ddl_create_table_participates.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/010_ddl_create_table_history_owners.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/011_dml_insert_users.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/012_dml_insert_engines.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/013_dml_insert_brands.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/014_dml_insert_bodies.sql" relativeToChangelogFile="true"/>
+	<include file="scripts/015_dml_insert_cars.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

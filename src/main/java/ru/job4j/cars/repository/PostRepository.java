@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class PostDbStore {
+public class PostRepository {
 
     private final CrudRepository crudRepository;
 
-    public PostDbStore(CrudRepository crudRepository) {
+    public PostRepository(CrudRepository crudRepository) {
         this.crudRepository = crudRepository;
     }
 

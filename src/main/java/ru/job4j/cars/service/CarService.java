@@ -2,16 +2,16 @@ package ru.job4j.cars.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.cars.model.Car;
-import ru.job4j.cars.repository.CarDbStore;
+import ru.job4j.cars.repository.CarRepository;
 
 import java.util.List;
 
 @Service
 public class CarService {
 
-    private final CarDbStore store;
+    private final CarRepository store;
 
-    public CarService(CarDbStore store) {
+    public CarService(CarRepository store) {
         this.store = store;
     }
 

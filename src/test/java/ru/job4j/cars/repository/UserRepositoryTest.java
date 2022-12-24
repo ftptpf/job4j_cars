@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
-class UserDbStoreTest {
+class UserRepositoryTest {
     private static final StandardServiceRegistry REGISTRY = new StandardServiceRegistryBuilder()
             .configure()
             .build();
@@ -24,13 +24,13 @@ class UserDbStoreTest {
 
     @BeforeAll
     public static void cleanBase() {
-        UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
+        UserRepository store = new UserRepository(new CrudRepository(SESSION_FACTORY));
         store.deleteAll();
     }
 
     @Test
     public void whenAddNewUser() {
-        UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
+        UserRepository store = new UserRepository(new CrudRepository(SESSION_FACTORY));
         User user = new User();
         user.setLogin("Oleg");
         user.setPassword("oleg");
@@ -54,7 +54,7 @@ class UserDbStoreTest {
 
     @Test
     public void whenAddNewUserWithSameLogin() {
-        UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
+        UserRepository store = new UserRepository(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
         user1.setLogin("Oleg");
         user1.setPassword("oleg");
@@ -74,7 +74,7 @@ class UserDbStoreTest {
 
     @Test
     public void whenFindAll() {
-        UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
+        UserRepository store = new UserRepository(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
         user1.setLogin("Oleg");
         user1.setPassword("oleg");
@@ -110,7 +110,7 @@ class UserDbStoreTest {
 
     @Test
     public void whenFindUserByLoginAndPassword() {
-        UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
+        UserRepository store = new UserRepository(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
         user1.setLogin("Oleg");
         user1.setPassword("oleg");
@@ -129,7 +129,7 @@ class UserDbStoreTest {
 
     @Test
     public void whenNotFindUserByLoginAndPassword() {
-        UserDbStore store = new UserDbStore(new CrudRepository(SESSION_FACTORY));
+        UserRepository store = new UserRepository(new CrudRepository(SESSION_FACTORY));
         User user1 = new User();
         user1.setLogin("Oleg");
         user1.setPassword("oleg");

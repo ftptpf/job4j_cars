@@ -18,5 +18,3 @@ COMMENT ON COLUMN posts.price IS 'Цена в объявлении';
 COMMENT ON COLUMN posts.sale IS 'Статус актуальности объявления';
 COMMENT ON COLUMN posts.user_id IS 'Автор объявления';
 COMMENT ON COLUMN posts.car_id IS 'Продаваемый автомобиль';
-
-

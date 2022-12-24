@@ -25,7 +25,7 @@ public class Car {
     @JoinTable(name = "history_owners",
             joinColumns = {@JoinColumn(name = "driver_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "car_id", nullable = false)})
-    List<Driver> drivers = new ArrayList<>();
+    private List<Driver> drivers = new ArrayList<>();
 
     public int getId() {
         return id;
