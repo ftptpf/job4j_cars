@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class CarService implements CrudService<Car> {
-    private final Store<Car> store;
+    private final Store<Car, String, Integer> store;
 
     public Car saveOrUpdate(Car car) {
         return store.saveOrUpdate(car);

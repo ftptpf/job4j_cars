@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class UserRepository implements Store<User> {
+public class UserRepository implements Store<User, String, Integer> {
     private final CrudRepository crudRepository;
 
     public Optional<User> create(User user) {
