@@ -1,20 +1,17 @@
 package ru.job4j.cars.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.cars.model.User;
-import ru.job4j.cars.repository.UserRepository;
+import ru.job4j.cars.repository.Store;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
-
-    private final UserRepository store;
-
-    public UserService(UserRepository store) {
-        this.store = store;
-    }
+@AllArgsConstructor
+public class UserService implements CrudService<User> {
+    private final Store<User> store;
 
     public Optional<User> create(User user) {
         return store.create(user);

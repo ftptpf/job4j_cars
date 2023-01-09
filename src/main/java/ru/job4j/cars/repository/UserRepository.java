@@ -1,5 +1,6 @@
 package ru.job4j.cars.repository;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ru.job4j.cars.model.User;
 import ru.job4j.cars.util.CrudRepository;
@@ -9,13 +10,9 @@ import java.util.Map;
 import java.util.Optional;
 
 @Repository
-public class UserRepository {
-
+@AllArgsConstructor
+public class UserRepository implements Store<User> {
     private final CrudRepository crudRepository;
-
-    public UserRepository(CrudRepository crudRepository) {
-        this.crudRepository = crudRepository;
-    }
 
     public Optional<User> create(User user) {
         try {

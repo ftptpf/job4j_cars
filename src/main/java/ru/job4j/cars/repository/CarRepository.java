@@ -1,5 +1,6 @@
 package ru.job4j.cars.repository;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ru.job4j.cars.model.Car;
 import ru.job4j.cars.util.CrudRepository;
@@ -7,13 +8,9 @@ import ru.job4j.cars.util.CrudRepository;
 import java.util.List;
 
 @Repository
-public class CarRepository {
-
+@AllArgsConstructor
+public class CarRepository implements Store<Car> {
     private final CrudRepository crudRepository;
-
-    public CarRepository(CrudRepository crudRepository) {
-        this.crudRepository = crudRepository;
-    }
 
     public Car saveOrUpdate(Car car) {
         return crudRepository.tx(session -> {

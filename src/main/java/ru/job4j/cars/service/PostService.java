@@ -1,19 +1,16 @@
 package ru.job4j.cars.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.cars.model.Post;
-import ru.job4j.cars.repository.PostRepository;
+import ru.job4j.cars.repository.Store;
 
 import java.util.List;
 
 @Service
-public class PostService {
-
-    private final PostRepository store;
-
-    public PostService(PostRepository store) {
-        this.store = store;
-    }
+@AllArgsConstructor
+public class PostService implements CrudService<Post> {
+    private final Store<Post> store;
 
     public Post saveOrUpdate(Post post) {
         return store.saveOrUpdate(post);
